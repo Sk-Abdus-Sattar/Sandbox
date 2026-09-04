@@ -119,8 +119,34 @@ renderer.toneMappingExposure = 1.08;
 
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(38, window.innerWidth / window.innerHeight, 0.1, 100);
-camera.position.set(4.2, 3.4, 5.4);
-camera.lookAt(0, 0, 0);
+
+// The camera's distance was previously a fixed (4.2,3.4,5.4) — tuned by eye
+// on a wide desktop window. On a tall/narrow phone viewport, that fixed
+// distance left the cube's *horizontal* extent badly overflowing the
+// screen (a 38° vertical FOV becomes a much narrower horizontal FOV on a
+// portrait aspect ratio). Fix: keep the same viewing angle/direction, but
+// recompute how far back the camera needs to sit so the cube's full
+// bounding sphere fits inside whichever of the two FOVs (horizontal or
+// vertical) is tighter for the current screen shape. Runs on load and on
+// every resize/orientation change.
+const CAMERA_DIRECTION = new THREE.Vector3(4.2, 3.4, 5.4).normalize();
+const CUBE_FIT_RADIUS = 2.85; // cube's rough bounding-sphere radius + a little breathing room
+
+function fitCameraToViewport(){
+  const w = window.innerWidth, h = window.innerHeight;
+  const aspect = w / h;
+  camera.aspect = aspect;
+
+  const fovV = THREE.MathUtils.degToRad(camera.fov);
+  const fovH = 2 * Math.atan(Math.tan(fovV / 2) * aspect);
+  const limitingFov = Math.min(fovV, fovH); // the tighter of the two is what actually clips the cube
+  const distance = CUBE_FIT_RADIUS / Math.sin(limitingFov / 2);
+
+  camera.position.copy(CAMERA_DIRECTION).multiplyScalar(distance);
+  camera.lookAt(0, 0, 0);
+  camera.updateProjectionMatrix();
+}
+fitCameraToViewport();
 
 scene.add(new THREE.AmbientLight(0xffffff, 0.5));
 const keyLight = new THREE.DirectionalLight(0xfff2d6, 1.25);
@@ -337,8 +363,7 @@ animate();
 function onResize(){
   const w = window.innerWidth, h = window.innerHeight;
   renderer.setSize(w, h);
-  camera.aspect = w / h;
-  camera.updateProjectionMatrix();
+  fitCameraToViewport();
   updateCubeOffset();
 }
 window.addEventListener('resize', onResize);
@@ -709,6 +734,7 @@ const TAP_MOVE_THRESHOLD = 6; // px
 
 function onPointerDown(e){
   if(!isMobileMode()) return;
+  e.preventDefault();
   isDragging = true;
   dragMoved = false;
   dragStart.x = lastPointer.x = e.clientX;
@@ -720,6 +746,7 @@ function onPointerDown(e){
 
 function onPointerMove(e){
   if(!isDragging) return;
+  e.preventDefault();
   const dx = e.clientX - lastPointer.x;
   const dy = e.clientY - lastPointer.y;
   lastPointer.x = e.clientX;
@@ -747,7 +774,7 @@ function onPointerUp(e){
   }
 }
 
-canvas.addEventListener('pointerdown', onPointerDown);
-window.addEventListener('pointermove', onPointerMove);
+canvas.addEventListener('pointerdown', onPointerDown, { passive: false });
+window.addEventListener('pointermove', onPointerMove, { passive: false });
 window.addEventListener('pointerup', onPointerUp);
 window.addEventListener('pointercancel', onPointerUp);
