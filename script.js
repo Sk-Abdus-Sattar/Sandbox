@@ -1,6 +1,6 @@
 /* Clarity landing page + case study
    - Comfort mode switch (both pages)
-   - Section highlight in the nav, equalizer bars, read-aloud demo, Markdown try-it and the download dialog (landing page only) */
+   - Section highlight in the nav, equalizer bars, read-aloud demo and Markdown try-it (landing page only) */
 (function () {
   "use strict";
   var root = document.documentElement;
@@ -265,25 +265,6 @@
           showTab(toPreview ? "preview" : "write", true);
         }
       });
-    });
-  }
-
-  /* ---------- Download Clarity: install steps in a dialog (landing page) ---------- */
-  var getBtn = document.getElementById("get-btn");
-  var getDialog = document.getElementById("get-dialog");
-  if (getBtn && getDialog) {
-    var APP_URL = "https://noor-productions.github.io/Clarity/";
-    var ua = navigator.userAgent || "";
-    var isApple = /iPhone|iPad|iPod/.test(ua) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
-    var mine = getDialog.querySelector('[data-os="' + (isApple ? "ios" : "android") + '"]');
-    if (mine) mine.classList.add("is-yours");
-
-    getBtn.addEventListener("click", function () {
-      if (typeof getDialog.showModal === "function") getDialog.showModal();
-      else window.location.href = APP_URL;
-    });
-    getDialog.addEventListener("click", function (e) {
-      if (e.target === getDialog || (e.target.closest && e.target.closest("[data-close]"))) getDialog.close();
     });
   }
 
