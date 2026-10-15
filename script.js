@@ -1,6 +1,6 @@
 /* Clarity landing page + case study
    - Comfort mode switch (both pages)
-   - Section highlight in the nav, equalizer bars and the read-aloud demo (landing page only) */
+   - Section highlight in the nav, equalizer bars, read-aloud demo, Markdown try-it and the download dialog (landing page only) */
 (function () {
   "use strict";
   var root = document.documentElement;
@@ -120,33 +120,173 @@
     var sample = document.getElementById("sample");
     var PLAY = "M4 2.5v11l9-5.5z", STOP = "M3.5 3.5h9v9h-9z";
 
-    var setSpeaking = function (on) {
-      root.classList.toggle("is-speaking", on);
+    // idle: ready to play. starting: pressed, waiting for the first sound. speaking: sound is playing.
+    var setState = function (state) {
+      var on = state !== "idle";
+      root.classList.toggle("is-speaking", state === "speaking");
       btn.setAttribute("aria-pressed", on ? "true" : "false");
-      label.textContent = on ? "Stop" : "Listen";
+      label.textContent = state === "idle" ? "Listen" : (state === "starting" ? "Starting\u2026" : "Stop");
       icon.setAttribute("d", on ? STOP : PLAY);
     };
 
     if (!("speechSynthesis" in window) || !window.SpeechSynthesisUtterance) {
       btn.hidden = true;
     } else {
+      var synth = window.speechSynthesis;
+      var chosen = null;
+
+      // Pick the voice ahead of time. Voices stored on the device start much faster
+      // than online voices, which is what made Listen feel late on phones.
+      var pickVoice = function () {
+        var all = synth.getVoices();
+        var en = all.filter(function (v) { return /^en([-_]|$)/i.test(v.lang); });
+        if (!en.length) return null;
+        var local = en.filter(function (v) { return v.localService; });
+        var pool = local.length ? local : en;
+        var us = pool.filter(function (v) { return /^en[-_]US/i.test(v.lang); });
+        return us[0] || pool[0];
+      };
+      var refreshVoice = function () { chosen = pickVoice(); };
+      refreshVoice();
+      if (synth.addEventListener) synth.addEventListener("voiceschanged", refreshVoice);
+      else synth.onvoiceschanged = refreshVoice;
+
+      // Wake the speech engine on the visitor's first tap anywhere, silently,
+      // so it is already running when they press Listen.
+      var primed = false;
+      var prime = function (e) {
+        if (primed) return;
+        primed = true;
+        // If the first tap is on Listen itself, the real speech starts right away
+        if (e && e.target && btn.contains(e.target)) return;
+        try {
+          var q = new SpeechSynthesisUtterance(" ");
+          q.volume = 0;
+          if (chosen) q.voice = chosen;
+          synth.speak(q);
+        } catch (e) {}
+      };
+      document.addEventListener("pointerup", prime, { once: true, passive: true });
+      document.addEventListener("keydown", prime, { once: true });
+
       btn.addEventListener("click", function () {
         if (btn.getAttribute("aria-pressed") === "true") {
-          speechSynthesis.cancel();
-          setSpeaking(false);
+          synth.cancel();
+          setState("idle");
           return;
         }
+        primed = true;
         var u = new SpeechSynthesisUtterance(sample.textContent);
-        u.lang = "en";
+        var v = chosen || pickVoice();
+        if (v) { u.voice = v; u.lang = v.lang; } else { u.lang = "en"; }
         u.rate = 0.95;
-        u.onend = u.onerror = function () { setSpeaking(false); };
-        speechSynthesis.cancel();
-        speechSynthesis.speak(u);
-        setSpeaking(true);
+        u.onstart = function () { setState("speaking"); };
+        u.onend = u.onerror = function () { setState("idle"); };
+        // Cancelling when nothing is playing makes some phones wait before they speak
+        if (synth.speaking || synth.pending) synth.cancel();
+        synth.speak(u);
+        setState("starting");
       });
-      window.addEventListener("pagehide", function () { speechSynthesis.cancel(); });
+      window.addEventListener("pagehide", function () { synth.cancel(); });
     }
   }
+
+  /* ---------- Markdown try-it (landing page) ---------- */
+  var mdIn = document.getElementById("md-input");
+  if (mdIn) {
+    var mdOut = document.getElementById("md-out");
+    var mdN = document.getElementById("md-n");
+    var tabWrite = document.getElementById("md-tab-write");
+    var tabPrev = document.getElementById("md-tab-preview");
+    var panelWrite = document.getElementById("md-panel-write");
+    var panelPrev = document.getElementById("md-panel-preview");
+
+    var esc = function (t) { return t.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;"); };
+    var inline = function (t) {
+      t = t.replace(/`([^`]+)`/g, "<code>$1</code>");
+      t = t.replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>");
+      t = t.replace(/__([^_]+)__/g, "<strong>$1</strong>");
+      t = t.replace(/\*([^*]+)\*/g, "<em>$1</em>");
+      t = t.replace(/(^|[^_])_([^_]+)_(?!_)/g, "$1<em>$2</em>");
+      return t;
+    };
+    // Same rules as the Clarity app: each Enter stays a line break
+    var render = function (src) {
+      if (!src.trim()) return '<p class="empty">Nothing to preview yet. Type something in Write.</p>';
+      var lines = esc(src).split("\n"), out = "", para = [], list = [], type = null;
+      var flushP = function () { if (para.length) { out += "<p>" + inline(para.join("<br>")) + "</p>"; para = []; } };
+      var flushL = function () {
+        if (list.length) {
+          out += "<" + type + ">" + list.map(function (li) { return "<li>" + inline(li) + "</li>"; }).join("") + "</" + type + ">";
+          list = []; type = null;
+        }
+      };
+      lines.forEach(function (line) {
+        var m;
+        if (/^\s*$/.test(line)) { flushP(); flushL(); }
+        else if ((m = line.match(/^(#{1,3})\s+(.*)$/))) { flushP(); flushL(); out += "<h" + m[1].length + ">" + inline(m[2]) + "</h" + m[1].length + ">"; }
+        else if (/^(-{3,}|\*{3,})\s*$/.test(line)) { flushP(); flushL(); out += "<hr>"; }
+        else if (/^&gt;\s?/.test(line)) { flushP(); flushL(); out += "<blockquote>" + inline(line.replace(/^&gt;\s?/, "")) + "</blockquote>"; }
+        else if ((m = line.match(/^\s*[-*]\s+(.*)$/))) { flushP(); if (type !== "ul") { flushL(); type = "ul"; } list.push(m[1]); }
+        else if ((m = line.match(/^\s*\d+\.\s+(.*)$/))) { flushP(); if (type !== "ol") { flushL(); type = "ol"; } list.push(m[1]); }
+        else { flushL(); para.push(line); }
+      });
+      flushP(); flushL();
+      return out;
+    };
+
+    var updateCount = function () {
+      var n = mdIn.value.length;
+      mdN.textContent = n;
+      document.getElementById("md-count").lastChild.textContent = n >= 50 ? " of 50, the limit for this demo" : " of 50";
+    };
+    updateCount();
+    mdIn.addEventListener("input", updateCount);
+
+    var showTab = function (which, focusTab) {
+      var preview = which === "preview";
+      tabWrite.setAttribute("aria-selected", preview ? "false" : "true");
+      tabPrev.setAttribute("aria-selected", preview ? "true" : "false");
+      tabWrite.tabIndex = preview ? -1 : 0;
+      tabPrev.tabIndex = preview ? 0 : -1;
+      panelWrite.hidden = preview;
+      panelPrev.hidden = !preview;
+      if (preview) mdOut.innerHTML = render(mdIn.value);
+      if (focusTab) (preview ? tabPrev : tabWrite).focus();
+      else if (!preview) mdIn.focus();
+    };
+    tabWrite.addEventListener("click", function () { showTab("write", false); });
+    tabPrev.addEventListener("click", function () { showTab("preview", false); });
+    [tabWrite, tabPrev].forEach(function (t) {
+      t.addEventListener("keydown", function (e) {
+        if (e.key === "ArrowRight" || e.key === "ArrowLeft" || e.key === "Home" || e.key === "End") {
+          e.preventDefault();
+          var toPreview = e.key === "End" || (e.key !== "Home" && t === tabWrite);
+          showTab(toPreview ? "preview" : "write", true);
+        }
+      });
+    });
+  }
+
+  /* ---------- Download Clarity: install steps in a dialog (landing page) ---------- */
+  var getBtn = document.getElementById("get-btn");
+  var getDialog = document.getElementById("get-dialog");
+  if (getBtn && getDialog) {
+    var APP_URL = "https://noor-productions.github.io/Clarity/";
+    var ua = navigator.userAgent || "";
+    var isApple = /iPhone|iPad|iPod/.test(ua) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+    var mine = getDialog.querySelector('[data-os="' + (isApple ? "ios" : "android") + '"]');
+    if (mine) mine.classList.add("is-yours");
+
+    getBtn.addEventListener("click", function () {
+      if (typeof getDialog.showModal === "function") getDialog.showModal();
+      else window.location.href = APP_URL;
+    });
+    getDialog.addEventListener("click", function (e) {
+      if (e.target === getDialog || (e.target.closest && e.target.closest("[data-close]"))) getDialog.close();
+    });
+  }
+
   /* ---------- FAQ: answers slide open and closed ---------- */
   Array.prototype.forEach.call(document.querySelectorAll(".faq details"), function (d) {
     var summary = d.querySelector("summary");

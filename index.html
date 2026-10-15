@@ -136,6 +136,7 @@
         <p class="lede">Clarity is a free reading and writing space with three comfort modes, read-aloud in six languages, and Markdown. Open it in your browser, or install it and keep working offline.</p>
         <div class="actions">
           <a class="btn btn-primary" href="https://noor-productions.github.io/Clarity/">Open Clarity</a>
+          <button type="button" class="btn btn-soft" id="get-btn" aria-haspopup="dialog">Download Clarity</button>
           <a class="btn btn-ghost" href="#features">See what's inside</a>
         </div>
         <a class="byline" href="#noor"><span class="logo" aria-hidden="true"></span><span>Built by <strong>NOOR Productions</strong>, a web design and development studio</span></a>
@@ -185,15 +186,25 @@
 
         <article class="tile tile-write">
           <h3>Write in Markdown</h3>
-          <p>Type with simple marks, then switch to Preview to see the formatted result.</p>
-          <div class="editor" aria-hidden="true">
+          <p>Try it. Type up to 50 characters with simple marks, then press Preview.</p>
+          <div class="editor">
             <div class="editor-frame">
-              <div class="tabs"><span class="on">Write</span><span>Preview</span></div>
-              <div class="split">
-                <pre>## Meeting notes
+              <div class="tabs" role="tablist" aria-label="Write or preview">
+                <button type="button" role="tab" id="md-tab-write" aria-selected="true" aria-controls="md-panel-write">Write</button>
+                <button type="button" role="tab" id="md-tab-preview" aria-selected="false" aria-controls="md-panel-preview" tabindex="-1">Preview</button>
+              </div>
+              <div class="md-panel" role="tabpanel" id="md-panel-write" aria-labelledby="md-tab-write">
+                <label class="sr-only" for="md-input">Type Markdown, up to 50 characters</label>
+                <textarea id="md-input" maxlength="50" rows="4" spellcheck="false" autocomplete="off" autocapitalize="off" aria-describedby="md-count md-hint">## Plan
 **Decide** by Friday
-- Send the draft</pre>
-                <div class="rendered"><span class="h">Meeting notes</span><strong>Decide</strong> by Friday<ul><li>Send the draft</li></ul></div>
+- Send the draft</textarea>
+                <div class="md-meta">
+                  <p id="md-hint">Try # for a heading, **bold**, *italic* or - for a list.</p>
+                  <p id="md-count"><span id="md-n">45</span> of 50</p>
+                </div>
+              </div>
+              <div class="md-panel" role="tabpanel" id="md-panel-preview" aria-labelledby="md-tab-preview" tabindex="0" hidden>
+                <div class="md-out" id="md-out"></div>
               </div>
             </div>
           </div>
@@ -202,7 +213,7 @@
         <article class="tile tile-export">
           <h3>Export when you're done</h3>
           <p>Save your document as a text file, a Markdown file or a PDF. An empty document can't be exported, so you never end up with a blank file.</p>
-          <div class="files" aria-hidden="true"><span class="file">.txt</span><span class="file">.md</span><span class="file pdf">.pdf</span></div>
+          <div class="files" aria-hidden="true"><span class="file txt">.txt</span><span class="file md">.md</span><span class="file pdf">.pdf</span></div>
         </article>
 
         <article class="tile tile-offline">
@@ -418,6 +429,39 @@
     <a href="https://noor-productions.github.io/noor-productions-site/">Visit the NOOR Productions site</a>
   </div>
 </footer>
+
+<dialog class="get" id="get-dialog" aria-labelledby="get-title">
+  <div class="get-box">
+    <div class="get-head">
+      <h2 id="get-title">Get Clarity on your device</h2>
+      <button type="button" class="get-close" data-close aria-label="Close">&times;</button>
+    </div>
+    <p class="get-lede">Clarity is free and there is no app store. You add it from your browser in a few taps. After that it opens like any other app and keeps working without internet.</p>
+    <div class="get-steps">
+      <section class="get-os" data-os="android">
+        <h3>Android, Windows, Mac or Chromebook <span class="yours">On your device</span></h3>
+        <p>Use Chrome or Edge.</p>
+        <ol>
+          <li>Open Clarity with the button at the bottom of this window.</li>
+          <li>Press the Install Clarity button at the top right of the page. Don't see it? Use the install icon in the address bar, or your browser's menu.</li>
+          <li>Confirm. Clarity now sits with your other apps.</li>
+        </ol>
+      </section>
+      <section class="get-os" data-os="ios">
+        <h3>iPhone or iPad <span class="yours">On your device</span></h3>
+        <p>Use Safari.</p>
+        <ol>
+          <li>Open Clarity with the button at the bottom of this window.</li>
+          <li>Tap the Share button, the square with an arrow.</li>
+          <li>Scroll down, tap Add to Home Screen, then tap Add.</li>
+        </ol>
+      </section>
+    </div>
+    <div class="actions">
+      <a class="btn btn-primary" href="https://noor-productions.github.io/Clarity/">Open Clarity to install</a>
+    </div>
+  </div>
+</dialog>
 
 <script src="script.js"></script>
 </body>
