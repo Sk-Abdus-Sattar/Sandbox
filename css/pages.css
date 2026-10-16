@@ -56,7 +56,7 @@
   align-items: center;
   gap: 14px;
   padding: 16px 18px;
-  background: rgba(14,14,18,0.7);
+  background: var(--glass);
   border: 1px solid var(--gold-dim);
   text-decoration: none;
   transition: border-color 0.25s ease, box-shadow 0.25s ease;
@@ -95,7 +95,7 @@
 
 /* Right column — form */
 .contact-form {
-  background: rgba(14,14,18,0.55);
+  background: rgba(8,46,47,0.5);
   border: 1px solid var(--gold-dim);
   padding: 36px;
 }
@@ -227,7 +227,7 @@
 --------------------------------------------------- */
 .testimonials-section {
   padding: 14vh var(--edge) 14vh;
-  background: var(--void);
+  background: var(--night);
 }
 @media (max-width: 720px) {
   .testimonials-section {
@@ -275,7 +275,7 @@
 /* Review card shape — for reference / reuse once backend renders real cards */
 .testimonial-card {
   position: relative;
-  background: rgba(14,14,18,0.7);
+  background: var(--glass);
   border: 1px solid var(--gold-dim);
   padding: 24px;
 }
@@ -388,7 +388,7 @@
 .review-modal-overlay {
   display: none;
   position: fixed; inset: 0;
-  background: rgba(6,6,8,0.85);
+  background: rgba(5,22,23,0.85);
   z-index: 999;
   align-items: center; justify-content: center;
   padding: 24px;

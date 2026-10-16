@@ -176,7 +176,7 @@
 }
 .related-card{
   position: relative;
-  background: rgba(14,14,18,0.7);
+  background: var(--glass);
   border: 1px solid var(--gold-dim);
   padding: 22px 22px 20px;
   text-decoration: none;

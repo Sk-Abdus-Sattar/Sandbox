@@ -899,6 +899,36 @@ function initFestiveOffer(){
   });
 }
 
+
+/* =========================================================
+   GLITTER — slow twinkling gold sparks drifting in the teal
+   sections. Few on phones, none for reduced-motion users.
+========================================================= */
+function initGlitter(){
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const small = window.matchMedia('(max-width: 760px)').matches;
+  const count = small ? 5 : 14;
+  document.querySelectorAll('.why-noor, .tariff, .deploy-teaser, .pipeline, .blog-section, .testimonials-section, .faq-section, .contact-section').forEach(sec => {
+    if (sec.querySelector(':scope > .glitter')) return;
+    const box = document.createElement('div');
+    box.className = 'glitter';
+    box.setAttribute('aria-hidden', 'true');
+    for (let i = 0; i < count; i++){
+      const sp = document.createElement('i');
+      sp.className = 'sparkle';
+      const size = 5 + Math.random() * 8;
+      sp.style.cssText =
+        'left:' + (2 + Math.random() * 96).toFixed(1) + '%;' +
+        'top:' + (2 + Math.random() * 96).toFixed(1) + '%;' +
+        'width:' + size.toFixed(1) + 'px;height:' + size.toFixed(1) + 'px;' +
+        'animation-delay:' + (Math.random() * 6).toFixed(2) + 's;' +
+        'animation-duration:' + (3 + Math.random() * 3).toFixed(2) + 's;';
+      box.appendChild(sp);
+    }
+    sec.insertBefore(box, sec.firstChild);
+  });
+}
+
 /* =========================================================
    PORTFOLIO — FIELD DEPLOYMENTS
    Horizontal cinematic archive. Vertical wheel/trackpad
@@ -1015,6 +1045,7 @@ window.addEventListener('DOMContentLoaded', () => {
   initWhyNoor();
   initTariff();
   initFestiveOffer();
+  initGlitter();
   initPortfolio();
   initPipeline();
   runLoader(() => {

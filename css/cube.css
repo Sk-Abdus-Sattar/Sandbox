@@ -2,13 +2,29 @@
    PROJECT CUBE — matches NOOR Productions design tokens
 =================================================== */
 :root{
-  --void:        #060608;
-  --charcoal:    #0e0e12;
-  --gold:        #c9a15a;
-  --gold-bright: #f0cd7a;
-  --gold-dim:    #6b5730;
-  --ink:         #e8e4d8;
-  --mono-text:   #9a9488;
+  --void:        #051213;
+  --charcoal:
+    radial-gradient(60% 75% at 6% 45%, rgba(42,157,143,0.46), transparent 72%),
+    radial-gradient(55% 75% at 95% 55%, rgba(212,160,23,0.27), transparent 72%),
+    radial-gradient(55% 55% at 50% 100%, rgba(74,124,89,0.38), transparent 72%),
+    radial-gradient(42% 45% at 30% 0%, rgba(168,218,220,0.15), transparent 72%),
+    linear-gradient(110deg, #0a3b3b 0%, #0F5C5C 24%, #0d4a46 50%, #1b3d2b 76%, #3a3012 100%);
+  --charcoal-lift: linear-gradient(rgba(246,217,138,0.08), rgba(246,217,138,0.08)), var(--charcoal);
+  --night:
+    radial-gradient(50% 60% at 4% 40%, rgba(15,92,92,0.55), transparent 72%),
+    radial-gradient(45% 60% at 98% 60%, rgba(212,160,23,0.16), transparent 72%),
+    radial-gradient(45% 45% at 55% 100%, rgba(74,124,89,0.22), transparent 72%),
+    #051213;
+  --card-solid: linear-gradient(155deg, #0d4646 0%, #0a3434 55%, #0b2c27 100%);
+  --glass: rgba(8,46,47,0.62);
+  --teal-deep:#0F5C5C; --teal-mid:#2A9D8F; --teal-mist:#A8DADC;
+  --sage:#4A7C59; --moss:#8AA899; --sage-light:#C2D9A0;
+  --gold-rich:#D4A017; --champagne:#E8C36A; --ivory:#FFF8E7;
+  --gold:        #dbb56a;
+  --gold-bright: #f6d98a;
+  --gold-dim:    #8c7440;
+  --ink:         #f4f0e4;
+  --mono-text:   #bfcbc3;
 
   --font-display: 'Space Grotesk', sans-serif;
   --font-mono:    'Space Mono', monospace;
@@ -205,7 +221,7 @@ body::before{
   padding: 7px 14px;
   border-radius: 999px;
   border: 1px solid var(--gold-dim);
-  background: rgba(14,14,18,0.7);
+  background: var(--glass);
   color: var(--mono-text);
   font-family: var(--font-mono);
   font-size: 10px;
@@ -232,7 +248,7 @@ body::before{
   height: 44px;
   border-radius: 10px;
   border: 1px solid var(--gold-dim);
-  background: rgba(14,14,18,0.7);
+  background: var(--glass);
   color: var(--mono-text);
   font-family: var(--font-mono);
   font-size: 11px;
@@ -405,7 +421,7 @@ body::before{
     border-radius: 50%;
     align-items: center;
     justify-content: center;
-    background: rgba(14,14,18,0.75);
+    background: rgba(8,46,47,0.78);
     border: 1px solid var(--gold-dim);
     color: var(--gold-bright);
     font-family: var(--font-mono);
@@ -424,7 +440,7 @@ body::before{
     border-radius: 50%;
     align-items: center;
     justify-content: center;
-    background: rgba(14,14,18,0.85);
+    background: rgba(7,40,41,0.88);
     border: 1px solid var(--gold);
     color: var(--gold-bright);
     font-size: 18px;
@@ -488,7 +504,7 @@ body::before{
     z-index: 70;
     max-width: 78vw;
     text-align: center;
-    background: rgba(10,10,12,0.94);
+    background: rgba(6,28,29,0.94);
     border: 1px solid var(--gold-dim);
     border-radius: 10px;
     padding: 16px 22px;
@@ -506,12 +522,12 @@ body::before{
     align-items: center;
     justify-content: center;
     padding: 24px;
-    background: rgba(6,6,8,0.78);
+    background: rgba(5,22,23,0.78);
   }
   .mobile-help-card{
     width: 100%;
     max-width: 360px;
-    background: #0e0e12;
+    background: #0a3434;
     border: 1px solid var(--gold-dim);
     border-radius: 14px;
     padding: 24px;
