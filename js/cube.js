@@ -440,7 +440,6 @@ function rotateToFace(face){
 /* ---------------- UI wiring ---------------- */
 const pickerTabs = document.getElementById('pickerTabs');
 const pickerGrid = document.getElementById('pickerGrid');
-const cubePicker = document.getElementById('cubePicker');
 const greeting = document.getElementById('greeting');
 const storyPanel = document.getElementById('storyPanel');
 const storyTag = document.getElementById('storyTag');

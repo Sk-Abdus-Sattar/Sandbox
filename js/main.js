@@ -241,6 +241,7 @@ function runLoader(onComplete){
         setTimeout(() => {
           if (raf) cancelAnimationFrame(raf);
           renderer.dispose();
+          renderer.forceContextLoss();
         }, 900);
       }, 350);
     }
@@ -259,13 +260,13 @@ function initHero(){
   const hero = document.getElementById('hero');
 
   const isMobile = window.innerWidth < 720;
-  const dpr = Math.min(window.devicePixelRatio || 1, 2);
+  const dpr = window.devicePixelRatio || 1;
 
   /* ---- Renderers ---- */
-  const particleRenderer = new THREE.WebGLRenderer({ canvas: particleCanvas, alpha: true, antialias: false });
-  particleRenderer.setPixelRatio(dpr);
-  const objectRenderer = new THREE.WebGLRenderer({ canvas: objectCanvas, alpha: true, antialias: true });
-  objectRenderer.setPixelRatio(dpr);
+  const particleRenderer = new THREE.WebGLRenderer({ canvas: particleCanvas, alpha: true, antialias: false, powerPreference: 'high-performance' });
+  particleRenderer.setPixelRatio(1); // faint dust — full-res buys nothing
+  const objectRenderer = new THREE.WebGLRenderer({ canvas: objectCanvas, alpha: true, antialias: false, powerPreference: 'high-performance' });
+  objectRenderer.setPixelRatio(Math.min(dpr, 1.5));
 
   function sizeRenderers(){
     const w = hero.clientWidth, h = hero.clientHeight;
@@ -316,7 +317,7 @@ function initHero(){
     // Renders any text or emoji to an offscreen canvas, samples its pixels,
     // and returns n particle positions scattered across that silhouette.
     // This one function powers every preset shape AND visitor-typed input.
-    const res = 480;
+    const res = 320;
     const canvas = document.createElement('canvas');
     canvas.width = canvas.height = res;
     const ctx = canvas.getContext('2d');
@@ -411,15 +412,11 @@ function initHero(){
   glowSprite.scale.set(2.8, 2.8, 1); // stays under the tightest silhouette's radius so it accents, never masks
   objGroup.add(glowSprite);
 
-  const innerLight = new THREE.PointLight(0xf0cd7a, 8, 14);
-  objGroup.add(innerLight);
-
   /* ---- Morph scheduler ----
      Simple state machine: holds on a preset shape, then eases into the next. */
   const HOLD_DUR = 3600, MORPH_DUR = 2200;
   let nextPresetIndex = 1;
   const state = { holding: true, timer: 0, from: null, to: null, holdDur: HOLD_DUR };
-  function easeInOutCubic(x){ return x < 0.5 ? 4*x*x*x : 1 - Math.pow(-2*x+2,3)/2; }
 
   function beginMorphTo(target, holdDur){
     state.from = livePositions.slice();
@@ -450,7 +447,11 @@ function initHero(){
   }
 
   sizeRenderers();
-  window.addEventListener('resize', sizeRenderers);
+  let resizeTimer = 0;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(sizeRenderers, 120);
+  });
 
   /* ---- Mouse tracking (lerped, so motion stays smooth/cheap) ---- */
   const mouse = { x: 0, y: 0 };
@@ -483,40 +484,41 @@ function initHero(){
     particleRenderer.render(pScene, pCamera);
     objectRenderer.render(oScene, oCamera);
   }
-  RenderBus.add(tick);
+  // Only render while the hero is actually on screen
+  new IntersectionObserver(([entry]) => {
+    if (entry.isIntersecting){ lastFrame = performance.now(); RenderBus.add(tick); }
+    else RenderBus.remove(tick);
+  }).observe(hero);
 }
 
 /* =========================================================
-   HUD readouts — live clock + faux coordinates that drift subtly
+   HUD readouts — live clock + coordinates
 ========================================================= */
 function initHUD(){
   const coordsEl = document.getElementById('hud-coords');
   const timeEl = document.getElementById('hud-time');
-  const baseLat = 23.2599, baseLng = 87.8615; // Bardhaman, grounding the HUD in something real
+  const baseLat = 23.2599; // Bardhaman, grounding the HUD in something real
 
   function update(){
     const now = new Date();
     timeEl.textContent = now.toTimeString().slice(0,8);
-    const jitter = Math.sin(Date.now() / 4000) * 0.002;
-    coordsEl.textContent = `${(baseLat + jitter).toFixed(4)}° N`;
+    coordsEl.textContent = `${baseLat.toFixed(4)}° N`;
   }
   update();
   setInterval(update, 1000);
 }
 
 /* =========================================================
-   TEXT REVEAL — glitch wordmark + typed subtitle, sequenced with GSAP
+   TEXT REVEAL — wordmark fade-up + typed subtitle, sequenced with GSAP
 ========================================================= */
 function revealHeroText(){
   const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
 
   tl.to('.eyebrow', { opacity: 1, duration: 0.6 })
-    .fromTo('#wordmark .line', {
-        opacity: 0, y: 26, filter: 'blur(6px)'
-      }, {
-        opacity: 1, y: 0, filter: 'blur(0px)', duration: 0.8, stagger: 0.15,
-        onStart: () => document.querySelectorAll('#wordmark .line').forEach(l => l.classList.add('glitching'))
-      }, '-=0.2')
+    .fromTo('#wordmark .line',
+      { opacity: 0, y: 26 },
+      { opacity: 1, y: 0, duration: 0.8, stagger: 0.15 },
+      '-=0.2')
     .add(typeSubtitle, '-=0.1');
 }
 
@@ -594,6 +596,7 @@ function initWhyNoor(){
   const CARD_W_EXP = 380, CARD_H_EXP = 260;
 
   function computeGeometry(){
+    dirty = true;
     const rect = scene.getBoundingClientRect();
     pivotX = rect.width;                 // right edge of the scene box
     pivotY = rect.height / 2;
@@ -638,6 +641,7 @@ function initWhyNoor(){
   let scrollVelocity  = 0;   // deg/sec, decays each frame
   let lastManualScroll = 0;  // timestamp of the last wheel tick
 
+  let dirty = true;         // layout only when something moved
   function isPaused(){ return hoverCount > 0 || expandedCount > 0 || modalOpen; }
 
   /* ---- Wrap an angle into the visible half-ring range [-90, 90) ---- */
@@ -699,6 +703,7 @@ function initWhyNoor(){
     if (Math.abs(scrollVelocity) > 0.01){
       rotationOffset += scrollVelocity * dt;
       scrollVelocity *= 0.9;
+      dirty = true;
     } else {
       scrollVelocity = 0;
     }
@@ -708,10 +713,10 @@ function initWhyNoor(){
     const settledSinceScroll = (now - lastManualScroll) > 600;
     if (!isPaused() && !reduceMotion && settledSinceScroll){
       rotationOffset += SPEED_DEG_PER_SEC * dt;
+      dirty = true;
     }
 
-    layout();
-    requestAnimationFrame(tick);
+    if (dirty){ dirty = false; layout(); }
   }
 
   /* ---- Per-card interaction: hover pause, tilt + torch, single/double click ---- */
@@ -753,6 +758,7 @@ function initWhyNoor(){
       el.classList.toggle('is-expanded', !wasExpanded);
       expandedCount += wasExpanded ? -1 : 1;
       expandedCount = Math.max(0, expandedCount);
+      dirty = true;
     }
 
     el.addEventListener('click', () => {
@@ -813,9 +819,14 @@ function initWhyNoor(){
 
   /* ---- Init ---- */
   computeGeometry();
-  window.addEventListener('resize', computeGeometry);
+  let geoTimer = 0;
+  window.addEventListener('resize', () => { clearTimeout(geoTimer); geoTimer = setTimeout(computeGeometry, 120); });
   layout();
-  requestAnimationFrame(tick);
+  // Spin only while the section is on screen
+  new IntersectionObserver(([entry]) => {
+    if (entry.isIntersecting){ lastTime = performance.now(); RenderBus.add(tick); }
+    else RenderBus.remove(tick);
+  }, { rootMargin: '80px' }).observe(document.querySelector('.why-noor') || scene);
 }
 
 
@@ -881,7 +892,7 @@ function initFestiveOffer(){
 
   // Glitter: a few twinkling stars per tile (fewer on phones)
   const small = window.matchMedia('(max-width: 760px)').matches;
-  const count = small ? 3 : 6;
+  const count = small ? 2 : 4;
   document.querySelectorAll('#tariff-sheet .tariff-row').forEach((row, ri) => {
     for (let i = 0; i < count; i++){
       const sp = document.createElement('i');
@@ -907,7 +918,7 @@ function initFestiveOffer(){
 function initGlitter(){
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   const small = window.matchMedia('(max-width: 760px)').matches;
-  const count = small ? 5 : 14;
+  const count = small ? 3 : 8;
   document.querySelectorAll('.why-noor, .tariff, .deploy-teaser, .pipeline, .blog-section, .testimonials-section, .faq-section, .contact-section').forEach(sec => {
     if (sec.querySelector(':scope > .glitter')) return;
     const box = document.createElement('div');
@@ -928,75 +939,6 @@ function initGlitter(){
     sec.insertBefore(box, sec.firstChild);
   });
 }
-
-/* =========================================================
-   PORTFOLIO — FIELD DEPLOYMENTS
-   Horizontal cinematic archive. Vertical wheel/trackpad
-   input gets redirected into horizontal scroll while the
-   cursor is over the track — deliberately different feel
-   from the ring (auto-drift) and the tariff rows (static).
-========================================================= */
-function initPortfolio(){
-  const track = document.getElementById('deploy-track');
-  const dotsWrap = document.getElementById('deploy-dots');
-  if (!track) return;
-
-  const cards = Array.from(track.children);
-
-  /* ---- Dot indicators, one per card ---- */
-  cards.forEach((_, i) => {
-    const dot = document.createElement('span');
-    dot.className = 'dot' + (i === 0 ? ' active' : '');
-    dotsWrap.appendChild(dot);
-  });
-  const dots = Array.from(dotsWrap.children);
-
-  function updateActiveDot(){
-    const trackCenter = track.scrollLeft + track.clientWidth / 2;
-    let closest = 0, closestDist = Infinity;
-    cards.forEach((card, i) => {
-      const cardCenter = card.offsetLeft + card.offsetWidth / 2;
-      const dist = Math.abs(cardCenter - trackCenter);
-      if (dist < closestDist){ closestDist = dist; closest = i; }
-    });
-    dots.forEach((d, i) => d.classList.toggle('active', i === closest));
-  }
-
-  let scrollRaf = null;
-  track.addEventListener('scroll', () => {
-    if (scrollRaf) return;
-    scrollRaf = requestAnimationFrame(() => { updateActiveDot(); scrollRaf = null; });
-  });
-
-  dots.forEach((dot, i) => {
-    dot.style.cursor = 'pointer';
-    dot.style.pointerEvents = 'auto';
-    dot.addEventListener('click', () => {
-      cards[i].scrollIntoView({ behavior: 'smooth', inline: 'start', block: 'nearest' });
-    });
-  });
-
-  /* Scrolling: left entirely to the browser's native behavior —
-     trackpad shift-scroll, touch swipe, or dragging the scrollbar.
-     No wheel redirection, no custom drag handling: nothing here
-     can intercept clicks on the "View Live" links. */
-
-  /* ---- Scroll reveal on entering view ---- */
-  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (window.gsap && window.ScrollTrigger && !reduceMotion){
-    gsap.registerPlugin(ScrollTrigger);
-    gsap.set(cards, { opacity: 0, y: 32 });
-    ScrollTrigger.create({
-      trigger: track,
-      start: 'top 85%',
-      once: true,
-      onEnter: () => gsap.to(cards, {
-        opacity: 1, y: 0, duration: 0.75, ease: 'power3.out', stagger: 0.1
-      })
-    });
-  }
-}
-
 
 /* =========================================================
    HOW WE WORK — PIPELINE SEQUENCE scroll reveal
@@ -1038,6 +980,19 @@ function initPipeline(){
 
 
 /* =========================================================
+   OFF-SCREEN SLEEP — pauses every CSS animation inside a section
+   (glitter, glints, rotating borders) while it is out of view.
+========================================================= */
+function initOffscreenPause(){
+  if (!('IntersectionObserver' in window)) return;
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => e.target.classList.toggle('is-off', !e.isIntersecting));
+  }, { rootMargin: '120px' });
+  document.querySelectorAll('#hero, main > section, body > footer').forEach(el => io.observe(el));
+}
+
+
+/* =========================================================
    BOOT
 ========================================================= */
 window.addEventListener('DOMContentLoaded', () => {
@@ -1046,8 +1001,8 @@ window.addEventListener('DOMContentLoaded', () => {
   initTariff();
   initFestiveOffer();
   initGlitter();
-  initPortfolio();
   initPipeline();
+  initOffscreenPause();
   runLoader(() => {
     initHero();
     revealHeroText();

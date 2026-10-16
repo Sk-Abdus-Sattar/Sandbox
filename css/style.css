@@ -174,19 +174,6 @@ body{
   position:relative;
 }
 
-/* glitch reveal state, toggled via JS/GSAP */
-#wordmark .line.glitching{
-  animation: glitch-shift 0.5s steps(2,end) 3;
-}
-@keyframes glitch-shift{
-  0%{ transform:translate(0,0); }
-  20%{ transform:translate(-3px,1px); }
-  40%{ transform:translate(3px,-1px); }
-  60%{ transform:translate(-2px,0); }
-  80%{ transform:translate(2px,1px); }
-  100%{ transform:translate(0,0); }
-}
-
 .hero-sub{
   font-family: var(--font-mono);
   font-size: clamp(0.75rem, 1.4vw, 0.95rem);
@@ -293,8 +280,7 @@ body{
   outline:none;
   perspective: 700px;
   transition: width 0.4s cubic-bezier(0.4,0,0.2,1),
-              height 0.4s cubic-bezier(0.4,0,0.2,1),
-              opacity 0.4s ease;
+              height 0.4s cubic-bezier(0.4,0,0.2,1);
   will-change: transform, opacity;
   /* 3D tilt + torch vars, set by JS on .arc-card-face while hovered */
 }
@@ -678,57 +664,6 @@ body{
   gap: 8px;
 }
 
-.deploy-track-wrap{
-  width: 100%;
-  overflow: hidden;
-}
-.deploy-track{
-  display: flex;
-  gap: 22px;
-  padding: 4px var(--edge) 22px;
-  overflow-x: auto;
-  scroll-snap-type: x proximity;
-  scrollbar-width: thin;
-  scrollbar-color: var(--gold-dim) transparent;
-}
-.deploy-track::-webkit-scrollbar{ height: 5px; }
-.deploy-track::-webkit-scrollbar-track{ background: transparent; }
-.deploy-track::-webkit-scrollbar-thumb{
-  background: var(--gold-dim);
-  border-radius: 3px;
-}
-.deploy-track::-webkit-scrollbar-thumb:hover{ background: var(--gold-bright); }
-
-.deploy-card{
-  position: relative;
-  flex: 0 0 clamp(280px, 32vw, 380px);
-  scroll-snap-align: start;
-  display: block;
-  text-decoration: none;
-  border: 1px solid var(--gold-dim);
-  background: var(--card-solid);
-  padding: 34px 28px 30px;
-  overflow: hidden;
-  transition: border-color 0.35s ease, box-shadow 0.35s ease, transform 0.35s ease;
-}
-.deploy-card:hover{
-  border-color: var(--gold-bright);
-  box-shadow: 0 0 44px rgba(240,205,122,0.16), 0 20px 44px rgba(0,0,0,0.45);
-  transform: translateY(-4px);
-}
-
-/* Self-referential card (the agency site itself) — not a link */
-.deploy-card.is-self{
-  cursor: default;
-  border-color: var(--gold-dim);
-}
-.deploy-card.is-self:hover{
-  border-color: var(--gold);
-  box-shadow: 0 0 26px rgba(240,205,122,0.08), 0 20px 44px rgba(0,0,0,0.4);
-  transform: none;
-}
-.deploy-card.is-self:hover .deploy-num{ -webkit-text-stroke-color: var(--gold-dim); }
-
 .deploy-live-dot{
   width: 6px; height: 6px;
   border-radius: 50%;
@@ -741,87 +676,7 @@ body{
   0%, 100%{ opacity: 1; }
   50%{ opacity: 0.4; }
 }
-.deploy-link-self{ color: var(--mono-text); }
-
-.deploy-num{
-  position: absolute;
-  top: -18px;
-  right: -6px;
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 6.4rem;
-  line-height: 1;
-  color: transparent;
-  -webkit-text-stroke: 1px var(--gold-dim);
-  pointer-events: none;
-  user-select: none;
-  transition: -webkit-text-stroke-color 0.35s ease;
-}
-.deploy-card:hover .deploy-num{ -webkit-text-stroke-color: var(--gold-bright); }
-
-.deploy-card-body{
-  position: relative;
-  z-index: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  min-height: 260px;
-}
-.deploy-tag{
-  font-family: var(--font-mono);
-  font-size: 10px;
-  letter-spacing: 0.14em;
-  color: var(--gold);
-}
-.deploy-name{
-  font-family: var(--font-display);
-  font-weight: 600;
-  font-size: 1.4rem;
-  line-height: 1.28;
-  color: var(--ink);
-}
-.deploy-desc{
-  font-family: var(--font-body);
-  font-size: 0.9rem;
-  line-height: 1.6;
-  color: var(--mono-text);
-  flex: 1 1 auto;
-}
-.deploy-link{
-  margin-top: auto;
-  font-family: var(--font-mono);
-  font-size: 11px;
-  letter-spacing: 0.14em;
-  color: var(--gold-bright);
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-}
 .deploy-arrow{ transition: transform 0.3s ease; display: inline-block; }
-.deploy-card:hover .deploy-arrow{ transform: translateX(5px); }
-
-.deploy-dots{
-  display: none;
-  justify-content: center;
-  gap: 8px;
-  margin-top: 8px;
-}
-.deploy-dots .dot{
-  width: 6px; height: 6px;
-  border-radius: 50%;
-  background: var(--gold-dim);
-  transition: background 0.3s ease, transform 0.3s ease;
-}
-.deploy-dots .dot.active{
-  background: var(--gold-bright);
-  transform: scale(1.4);
-}
-
-@media (max-width: 640px){
-  .deploy-card{ flex-basis: 78vw; padding: 28px 22px 24px; }
-  .deploy-num{ font-size: 5rem; }
-  .deploy-card-body{ min-height: 220px; }
-}
 
 
 /* ---- Extra-large screens (TVs, ultrawide monitors): the left column
@@ -1986,8 +1841,8 @@ body{
   100%{ background-position: -40% 0; }
 }
 
-/* Card sweep: strong on hover, faint idle pass on the content cards */
-.pipeline-step::after, .deploy-card::after, .blog-card::after, .faq-item::after,
+/* Card sweep: on hover */
+.pipeline-step::after, .blog-card::after, .faq-item::after,
 .testimonial-card::after, .contact-link-item::after, .related-card::after{
   content: '';
   position: absolute; inset: 0;
@@ -1998,13 +1853,7 @@ body{
   background-position: 160% 0;
   opacity: 0;
 }
-.pipeline-step::after, .deploy-card::after, .blog-card::after, .testimonial-card::after{
-  opacity: 0.55;
-  animation: offer-sweep 9s ease-in-out infinite;
-}
-.blog-card:nth-child(2n)::after, .testimonial-card:nth-child(2n)::after, .pipeline-step:nth-child(2n)::after{ animation-delay: 2.2s; }
-.blog-card:nth-child(3n)::after, .testimonial-card:nth-child(3n)::after, .pipeline-step:nth-child(3n)::after{ animation-delay: 4.4s; }
-.pipeline-step:hover::after, .deploy-card:hover::after, .blog-card:hover::after, .faq-item:hover::after,
+.pipeline-step:hover::after, .blog-card:hover::after, .faq-item:hover::after,
 .testimonial-card:hover::after, .contact-link-item:hover::after, .related-card:hover::after{
   opacity: 1;
   animation: offer-sweep-once 1.1s ease-out 1;
@@ -2015,15 +1864,11 @@ body{
 }
 
 /* Lit cards: teal glass edge catching gold light */
-.blog-card, .faq-item, .testimonial-card, .contact-link-item, .related-card, .pipeline-step, .deploy-card{
+.blog-card, .faq-item, .testimonial-card, .contact-link-item, .related-card, .pipeline-step{
   box-shadow: inset 0 1px 0 rgba(246,217,138,0.10), 0 12px 32px rgba(0,0,0,0.28);
 }
-.blog-card:hover, .faq-item:hover, .testimonial-card:hover, .contact-link-item:hover, .related-card:hover, .deploy-card:hover{
+.blog-card:hover, .faq-item:hover, .testimonial-card:hover, .contact-link-item:hover, .related-card:hover{
   box-shadow: inset 0 1px 0 rgba(246,217,138,0.22), 0 0 30px rgba(42,157,143,0.28), 0 16px 38px rgba(0,0,0,0.35);
-}
-.blog-card, .testimonial-card, .contact-link-item, .faq-item{
-  -webkit-backdrop-filter: blur(6px);
-  backdrop-filter: blur(6px);
 }
 
 /* Nav: teal glass with a lit gold edge */
@@ -2039,11 +1884,12 @@ body{
 
 @media (max-width: 760px){
   .glitter{ opacity: 0.6; }
-  .blog-card, .testimonial-card, .contact-link-item, .faq-item{ -webkit-backdrop-filter: none; backdrop-filter: none; }
 }
 @media (prefers-reduced-motion: reduce){
   .why-noor-title, .tariff-title, .deploy-title, .pipeline-title, .blog-title, .faq-title,
   .testimonials-title, .contact-title{ animation: none !important; background-position: 130% 0; }
-  .pipeline-step::after, .deploy-card::after, .blog-card::after, .testimonial-card::after{ animation: none !important; opacity: 0; }
   .glitter .sparkle{ animation: none !important; opacity: 0.35; }
 }
+
+/* Ambient animations sleep while their section is off-screen (toggled by JS) */
+.is-off, .is-off *, .is-off *::before, .is-off *::after{ animation-play-state: paused !important; }

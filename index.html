@@ -292,8 +292,8 @@
   <div class="hero-content">
     <p class="eyebrow" data-reveal>WEB DESIGN &nbsp;/&nbsp; SEO &nbsp;/&nbsp; DIGITAL ARCHITECTURE</p>
     <h1 id="wordmark" aria-label="NOOR Productions">
-      <span class="line" data-glitch>NOOR</span>
-      <span class="line" data-glitch>PRODUCTIONS</span>
+      <span class="line">NOOR</span>
+      <span class="line">PRODUCTIONS</span>
     </h1>
     <p class="hero-sub" id="typed-sub"></p>
     <p class="hero-sub hero-sub--seo">Premium web design, custom development, SEO optimization, and digital strategy for businesses that want stronger visibility, trust, and online growth.</p>
@@ -1091,36 +1091,6 @@
 </div>
 
 <script>
-/* ---- Blog grid scroll reveal ---- */
-(function(){
-  if(window.gsap && window.ScrollTrigger){
-    gsap.registerPlugin(ScrollTrigger);
-    const cards = document.querySelectorAll('#blog-grid .blog-card');
-    gsap.set(cards, { opacity:0, y:32 });
-    ScrollTrigger.create({
-      trigger: '#blog',
-      start: 'top 80%',
-      onEnter: () => gsap.to(cards, { opacity:1, y:0, duration:0.55, stagger:0.07, ease:'power3.out' })
-    });
-  }
-})();
-
-/* ---- FAQ grid scroll reveal ---- */
-(function(){
-  if(window.gsap && window.ScrollTrigger){
-    gsap.registerPlugin(ScrollTrigger);
-    const items = document.querySelectorAll('#faq-grid .faq-item');
-    gsap.set(items, { opacity:0, y:24 });
-    ScrollTrigger.create({
-      trigger: '#faq',
-      start: 'top 80%',
-      onEnter: () => gsap.to(items, { opacity:1, y:0, duration:0.5, stagger:0.05, ease:'power3.out' })
-    });
-  }
-})();
-</script>
-
-<script>
 /* ---- Sticky nav: scroll-triggered reveal + active section highlight ---- */
 (function(){
   const nav     = document.getElementById('site-nav');
@@ -1130,31 +1100,26 @@
   const links   = document.querySelectorAll('.nav-links a, .nav-drawer-links a[href^="#"]');
   const sections = ['why-noor','pricing','portfolio','how-we-work','blog','testimonials','faq','contact'];
 
-  /* Show/hide nav on scroll */
-  let lastY = 0, ticking = false;
+  /* Show/hide nav on scroll + active link (section offsets cached, no layout reads per frame) */
+  let ticking = false, tops = [];
+  function measure(){
+    const y = window.scrollY;
+    tops = sections.map(id => {
+      const el = document.getElementById(id);
+      return el ? { id, top: el.getBoundingClientRect().top + y } : null;
+    }).filter(Boolean);
+  }
   function onScroll(){
     const y = window.scrollY;
-    if(y > 80){
-      nav.classList.add('nav--visible');
-    } else {
-      nav.classList.remove('nav--visible');
-    }
-
-    /* Active link */
+    nav.classList.toggle('nav--visible', y > 80);
     let active = null;
-    sections.forEach(id => {
-      const el = document.getElementById(id);
-      if(!el) return;
-      if(el.getBoundingClientRect().top <= 120) active = id;
-    });
-    links.forEach(a => {
-      const href = a.getAttribute('href');
-      a.classList.toggle('is-active', href === '#' + active);
-    });
-
-    lastY = y; ticking = false;
+    for (const t of tops) if (t.top - y <= 120) active = t.id;
+    links.forEach(a => a.classList.toggle('is-active', a.getAttribute('href') === '#' + active));
+    ticking = false;
   }
-  window.addEventListener('scroll', () => { if(!ticking){ requestAnimationFrame(onScroll); ticking=true; } }, {passive:true});
+  measure(); onScroll();
+  new ResizeObserver(() => { measure(); onScroll(); }).observe(document.body);
+  window.addEventListener('scroll', () => { if(!ticking){ requestAnimationFrame(onScroll); ticking = true; } }, {passive:true});
 
   /* Mobile burger */
   function openDrawer(){
@@ -1186,16 +1151,16 @@
   }
 }
 </script>
-<script src="js/vendor/gsap.min.js"></script>
-<script src="js/vendor/ScrollTrigger.min.js"></script>
+<script defer src="js/vendor/gsap.min.js"></script>
+<script defer src="js/vendor/ScrollTrigger.min.js"></script>
 <script type="module" src="js/main.js"></script>
 
 <!-- Reviews backend: Firebase Auth + Firestore (Spark plan, no Cloud Functions) -->
-<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <script type="module" src="js/reviews.js"></script>
 
 <!-- Contact form: sends via EmailJS, shared with contact.html -->
-<script src="js/contact.js"></script>
+<script defer src="js/contact.js"></script>
 
 <script>
 /* ---- FAQ accordion: smooth expand/collapse for native <details> ---- */

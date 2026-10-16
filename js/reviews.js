@@ -58,12 +58,6 @@ if (window.emailjs) {
   console.error("EmailJS SDK not loaded — check the <script> tag order in index.html");
 }
 
-function emailClient(toEmail, toName, subject, message) {
-  if (!window.emailjs) return;
-  return window.emailjs
-    .send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, { to_email: toEmail, to_name: toName || toEmail, subject, message })
-    .catch((e) => console.error("EmailJS (to client) failed:", e));
-}
 function emailAdmin(subject, message) {
   if (!window.emailjs) return;
   return window.emailjs
