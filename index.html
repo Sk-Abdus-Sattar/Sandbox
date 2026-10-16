@@ -1,436 +1,1272 @@
-<!doctype html>
-<html lang="en" data-mode="dark">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Clarity: Free Reading &amp; Writing App with Read-Aloud</title>
-<meta name="description" content="Free reading and writing app with dark, bright and eye-care modes, read-aloud in six languages, Markdown and offline use. Built by NOOR Productions.">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>NOOR Productions | Premium Web Design & Digital Architecture</title>
+<meta name="description" content="NOOR Productions creates premium, high-converting websites and digital experiences for ambitious businesses. Explore web design, development, SEO, pricing, portfolio, and studio insights.">
+<meta name="keywords" content="web design, web development, digital architecture, business website, premium website, SEO website, NOOR Productions">
 <meta name="author" content="NOOR Productions">
-<meta name="application-name" content="Clarity">
-<meta name="robots" content="index, follow, max-image-preview:large">
-<meta name="theme-color" content="#0d171b">
-
-<link rel="canonical" href="https://noor-productions.github.io/Clarity-Landing-Page/">
-<meta property="og:url" content="https://noor-productions.github.io/Clarity-Landing-Page/">
-<meta property="og:image" content="https://noor-productions.github.io/Clarity-Landing-Page/assets/og-image.png">
-<meta name="twitter:image" content="https://noor-productions.github.io/Clarity-Landing-Page/assets/og-image.png">
-
-
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="Clarity by NOOR Productions">
-<meta property="og:title" content="Clarity: Free Reading &amp; Writing App with Read-Aloud">
-<meta property="og:description" content="Three comfort modes, read-aloud in six languages, Markdown and offline use. Free, built by NOOR Productions.">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="The Clarity logo with the line: A calm place to read and write.">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Clarity: Free Reading &amp; Writing App with Read-Aloud">
-<meta name="twitter:description" content="Three comfort modes, read-aloud in six languages, Markdown and offline use. Free, built by NOOR Productions.">
-
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#05070b">
 <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png">
-<link rel="apple-touch-icon" href="assets/apple-touch-icon-180.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&family=Literata:ital,opsz,wght@0,7..72,400..700;1,7..72,400..700&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" sizes="48x48" href="assets/favicon-48.png">
+<link rel="shortcut icon" href="assets/favicon.ico">
+<link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+<link rel="canonical" href="https://www.noorproductions.studio/index.html">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="NOOR Productions | Premium Web Design & Digital Architecture">
+<meta property="og:description" content="NOOR Productions creates premium, high-converting websites and digital experiences for ambitious businesses. Explore web design, development, SEO, pricing, portfolio, and studio insights.">
+<meta property="og:url" content="https://www.noorproductions.studio/index.html">
+<meta property="og:site_name" content="NOOR Productions">
+<meta property="og:image" content="https://www.noorproductions.studio/assets/logo.png">
+<meta property="og:image:alt" content="NOOR Productions logo">
+<meta property="og:locale" content="en_US">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="NOOR Productions | Premium Web Design & Digital Architecture">
+<meta name="twitter:description" content="NOOR Productions creates premium, high-converting websites and digital experiences for ambitious businesses. Explore web design, development, SEO, pricing, portfolio, and studio insights.">
+<meta name="twitter:image" content="https://www.noorproductions.studio/assets/logo.png">
 
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@graph": [
+  "@type": ["Organization", "WebSite"],
+  "name": "NOOR Productions",
+  "url": "https://www.noorproductions.studio/index.html",
+  "description": "NOOR Productions creates premium, high-converting websites and digital experiences for ambitious businesses.",
+  "sameAs": [],
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://www.noorproductions.studio/index.html#blog",
+    "query-input": {
+      "@type": "PropertyValueSpecification",
+      "valueRequired": true,
+      "valueName": "search_term_string"
+    }
+  }
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/pages.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
     {
-      "@type": "WebApplication",
-      "name": "Clarity",
-      "description": "A free reading and writing app with three comfort modes, read-aloud, Markdown, export and offline use.",
-      "applicationCategory": "ProductivityApplication",
-      "operatingSystem": "Any",
-      "browserRequirements": "Requires a modern web browser",
-      "inLanguage": "en",
-      "url": "https://noor-productions.github.io/Clarity-Landing-Page/",
-      "image": "https://noor-productions.github.io/Clarity-Landing-Page/assets/og-image.png",
-      "isAccessibleForFree": true,
-      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
-      "featureList": [
-        "Dark, Bright and Eye care comfort modes",
-        "Eye care brightness and warmth sliders",
-        "Live contrast ratio badge graded AAA, AA or Too low",
-        "Animated backgrounds that are remembered for each mode",
-        "14 fonts including Atkinson Hyperlegible, with adjustable size, line spacing and line width",
-        "Paste plain text or Markdown with no outside formatting",
-        "Markdown writing with live preview",
-        "Word and character count",
-        "Saved documents list with automatic titles and auto-saved drafts",
-        "Read-aloud in English, French, Portuguese (Brazil), Spanish, German and Mandarin Chinese",
-        "Best voice picked automatically, with an advanced voice picker",
-        "One-click free English voice download",
-        "Adjustable reading speed with play, pause and stop",
-        "Export to .txt, .md and PDF, plus copy to clipboard",
-        "Keyboard shortcuts",
-        "Installable, works offline",
-        "Keyboard focus, screen reader labels and responsive layout"
-      ],
-      "creator": { "@id": "https://noor-productions.github.io/noor-productions-site/#organization" }
+      "@type": "Question",
+      "name": "How long does it take to build a website?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Most business websites take between 3 and 6 weeks from kickoff to launch, depending on scope. A simple one-page site can be ready in under two weeks, while larger multi-page or e-commerce builds can take 6-8 weeks. We'll give you a firm timeline after our first briefing call."
+      }
     },
     {
-      "@type": "Organization",
-      "@id": "https://noor-productions.github.io/noor-productions-site/#organization",
-      "name": "NOOR Productions",
-      "url": "https://noor-productions.github.io/noor-productions-site/",
-      "description": "A web design and development studio that builds websites and web apps for businesses."
+      "@type": "Question",
+      "name": "How much does a website cost?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Pricing starts from \u20b910,000 for website development (\u20b95,000 during our Festive Season Offer, 50% off everything until 21 October 2026) and varies based on pages, features, and design complexity. Check our Pricing section for a full breakdown, or reach out for a custom quote tailored to your project."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What's included in the price?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Every project includes design, development, mobile responsiveness, basic SEO setup, and a full personal review before launch. Hosting, domain registration, and ongoing maintenance are available as add-ons if you'd like us to manage them for you."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do I own the website once it's built?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Once the final payment is made, you own the website, its code, and all its content outright. We don't lock you into proprietary platforms or hold your site hostage."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Will my website work on mobile phones?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Absolutely. Every website we build is fully responsive, meaning it adapts to phones, tablets, and desktops automatically. We test across real devices before handing anything off."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you offer website maintenance after launch?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. We offer ongoing maintenance plans covering updates, security monitoring, backups, and small content changes. You can also choose to manage the site yourself \u2014 we'll hand over everything you need."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I update the website content myself?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, if you'd like a content management system (CMS), we can build your site so you can edit text, images, and blog posts without touching any code. Just let us know during planning."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you review the website before it's handed over?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes \u2014 I personally review every website myself, end to end, until it's fully polished. Layout, content, responsiveness, performance \u2014 I go through it all before you ever see a rough draft. There's no fixed cap on 'revision rounds'; I keep refining on my own until it's right, then walk you through the finished result."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you design the website or just build it?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Both. We handle everything from visual design and brand alignment to development, testing, and launch. You won't need to hire a separate designer and developer."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What if I already have a logo and brand guidelines?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Even better. We'll build your website around your existing brand identity \u2014 colors, fonts, and tone \u2014 to keep everything consistent across your business."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What if I don't have a logo or brand yet?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "That's fine too. We can help you shape a simple visual identity as part of the project, or point you toward the right direction before we start building."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Will my website show up on Google?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We build every site with SEO fundamentals in place \u2014 clean code, fast load times, proper headings, and metadata. Ranking well over time also depends on content, backlinks, and consistency, which we can advise on separately."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you build online stores / e-commerce sites?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, we build e-commerce fronts with product listings, cart, and checkout functionality. Let us know your expected catalog size and payment gateway preferences so we can scope it properly."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can you redesign my existing website instead of building from scratch?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. We regularly redesign outdated sites \u2014 improving speed, structure, and visual design while keeping the content and SEO history that already works in your favor."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Who pays for hosting and domain?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "You handle your own hosting and domain purchase \u2014 that keeps the account fully in your name and keeps your costs down. I'll guide you through picking and connecting everything during the build, but I don't take on ongoing hosting or domain management as a service \u2014 my time stays focused on design and development work."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do payments work?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We typically work with a 50% deposit to begin the project and the remaining balance due at launch. For larger projects, we can split payments into milestones \u2014 this gets confirmed in your project agreement."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What if I need to cancel the project midway?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We understand plans change. If a project is cancelled after work has started, you're billed only for the work completed up to that point, based on the agreed milestones."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do we communicate during the project?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We keep it simple \u2014 email and WhatsApp/calls for quick updates, with milestone check-ins so you always know where things stand. No project management software to learn."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What industries do you typically work with?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Our live portfolio spans local retail and e-commerce \u2014 a pharmacy, a neighbourhood general store, and a fashion boutique \u2014 each built as a full ordering experience, not just a brochure site. If your business sells products or services and needs a website that actually converts visitors into customers, we're a strong fit."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What happens after my website goes live?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We do a final walkthrough, hand over any logins and files you need, and stay available for support. If you're on a maintenance plan, we continue monitoring and updating the site for you."
+      }
     }
   ]
 }
 </script>
-
-<script>
-  // Set the mode before first paint so the page never flashes the wrong theme.
-  (function () {
-    var mode = "dark";
-    try {
-      var saved = localStorage.getItem("clarity-landing-mode");
-      if (saved === "dark" || saved === "bright" || saved === "eye") mode = saved;
-      else if (window.matchMedia && matchMedia("(prefers-color-scheme: light)").matches) mode = "bright";
-    } catch (e) {}
-    document.documentElement.setAttribute("data-mode", mode);
-  })();
-</script>
-
-<link rel="stylesheet" href="style.css">
 </head>
 <body>
-<a class="skip" href="#main">Skip to content</a>
 
-<div class="ambient" aria-hidden="true">
-  <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
+<!-- ================= LOADER ================= -->
+<div id="loader">
+  <canvas id="loader-canvas" width="300" height="300" aria-hidden="true"></canvas>
+  <div id="loader-readout">
+    <span id="loader-percent">00</span><span class="pct-sign">%</span>
+  </div>
+  <div id="loader-label">ASSEMBLING&nbsp;ARCHITECTURE</div>
 </div>
 
-<header class="site-header">
-  <div class="wrap bar">
-    <a class="brand" href="#top" aria-label="Clarity, back to top">
-      <span class="brand-wordmark" aria-hidden="true"></span><span class="brand-mark" aria-hidden="true"></span>
+<!-- ================= STICKY NAV ================= -->
+<nav id="site-nav" aria-label="Site navigation">
+  <a class="nav-logo" href="#hero" aria-label="NOOR Productions — back to top">
+    <img src="assets/logo.png" alt="NOOR Productions logo" class="nav-logo-img" width="32" height="32">
+    <span class="nav-logo-text">NOOR Productions</span>
+    <span class="nav-logo-dot"></span>
+  </a>
+  <ul class="nav-links" role="list">
+    <li><a href="#why-noor">BRIEFING</a></li>
+    <li><a href="#pricing">PRICING</a></li>
+    <li><a href="#portfolio">WORK</a></li>
+    <li><a href="#how-we-work">PROCESS</a></li>
+    <li><a href="#blog">BLOG</a></li>
+    <li><a href="#testimonials">REVIEWS</a></li>
+    <li><a href="#faq">FAQ</a></li>
+  </ul>
+  <a class="nav-clarity" href="https://noor-productions.github.io/Clarity-Landing-Page/" target="_blank" rel="noopener" aria-label="Clarity — open the Clarity landing page" title="Clarity">C</a>
+  <a class="nav-cta" href="#contact" aria-label="Go to contact section">
+    <span class="nav-cta-dot"></span>CONTACT
+  </a>
+  <button class="nav-burger" id="nav-burger" aria-label="Open menu" aria-expanded="false" aria-controls="nav-drawer">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- Mobile drawer -->
+<div class="nav-drawer" id="nav-drawer" aria-hidden="true">
+  <ul class="nav-drawer-links" role="list">
+    <li><a href="#why-noor">BRIEFING</a></li>
+    <li><a href="#pricing">PRICING</a></li>
+    <li><a href="#portfolio">WORK</a></li>
+    <li><a href="#how-we-work">PROCESS</a></li>
+    <li><a href="#blog">BLOG</a></li>
+    <li><a href="#testimonials">REVIEWS</a></li>
+    <li><a href="#faq">FAQ</a></li>
+    <li><a href="#contact">CONTACT</a></li>
+  </ul>
+</div>
+<div class="nav-overlay" id="nav-overlay" aria-hidden="true"></div>
+
+<!-- ================= HERO ================= -->
+<header id="hero">
+  <canvas id="particle-canvas"></canvas>
+  <canvas id="object-canvas"></canvas>
+
+  <!-- HUD frame -->
+  <div class="hud-corner hud-tl"><span class="hud-text">SYS.NOOR</span></div>
+  <div class="hud-corner hud-tr"><span class="hud-text" id="hud-coords">00.0000° N</span></div>
+  <div class="hud-corner hud-bl"><span class="hud-dot"></span><span class="hud-text">LIVE</span></div>
+  <div class="hud-corner hud-br"><span class="hud-text" id="hud-time">00:00:00</span></div>
+
+  <div class="hero-content">
+    <p class="eyebrow" data-reveal>WEB DESIGN &nbsp;/&nbsp; SEO &nbsp;/&nbsp; DIGITAL ARCHITECTURE</p>
+    <h1 id="wordmark" aria-label="NOOR Productions">
+      <span class="line" data-glitch>NOOR</span>
+      <span class="line" data-glitch>PRODUCTIONS</span>
+    </h1>
+    <p class="hero-sub" id="typed-sub"></p>
+    <p class="hero-sub hero-sub--seo">Premium web design, custom development, SEO optimization, and digital strategy for businesses that want stronger visibility, trust, and online growth.</p>
+    <a class="offer-pill" href="#pricing" aria-label="Festive offer: 50% off everything till 21st October. View pricing.">
+      <span class="offer-pill-dot"></span>
+      <span class="offer-pill-text"><b>FESTIVE OFFER</b><span class="offer-pill-sep"> &middot; </span>50% OFF EVERYTHING<span class="offer-pill-until"> &middot; TILL 21 OCT</span></span>
+      <span class="offer-timer" data-offer-timer aria-hidden="true"></span>
+      <span class="offer-pill-go" aria-hidden="true">&rarr;</span>
     </a>
-    <nav class="nav" aria-label="Main">
-      <a href="./#features" data-spy="features">Features</a>
-      <a href="./#noor" data-spy="noor">NOOR Productions</a>
-      <a href="./#faq" data-spy="faq">FAQ</a>
-      <a href="case-study.html">Case study</a>
-    </nav>
-    <div class="bar-end">
-      <div class="mode-switch" role="radiogroup" aria-label="Comfort mode">
-        <span class="mode-pill" aria-hidden="true"></span>
-        <button type="button" role="radio" data-mode-btn="dark" data-label="Dark" aria-checked="false">Dark</button>
-        <button type="button" role="radio" data-mode-btn="bright" data-label="Bright" aria-checked="false">Bright</button>
-        <button type="button" role="radio" data-mode-btn="eye" data-label="Eye care" aria-checked="false">Eye care</button>
-      </div>
-      <a class="btn btn-primary btn-sm" href="https://noor-productions.github.io/noor-productions-site/contact.html">Start a project</a>
-    </div>
+
   </div>
+
 </header>
 
-<main id="main">
-  <div class="wrap" id="top">
+<main>
 
-    <section class="hero" aria-labelledby="hero-title">
-      <div>
-        <h1 id="hero-title">A calm place to read and write.</h1>
-        <p class="lede">Clarity is a free reading and writing space with three comfort modes, read-aloud in six languages, and Markdown. Open it in your browser, or install it and keep working offline.</p>
-        <div class="actions">
-          <a class="btn btn-primary" href="https://noor-productions.github.io/Clarity/">Open Clarity</a>
-          <a class="btn btn-soft" id="get-btn" href="https://noor-productions.github.io/Clarity/?install=1">Download Clarity</a>
-          <a class="btn btn-ghost" href="#features">See what's inside</a>
-        </div>
-        <a class="byline" href="#noor"><span class="logo" aria-hidden="true"></span><span>Built by <strong>NOOR Productions</strong>, a web design and development studio</span></a>
-      </div>
+<!-- ================= WHY NOOR — ARC WHEEL BRIEFING ================= -->
+<section id="why-noor" class="why-noor">
 
-      <div class="sheet" aria-label="A sample Clarity page">
-        <div class="sheet-bar">
-          <button type="button" class="listen" id="listen" aria-pressed="false">
-            <svg viewBox="0 0 16 16" aria-hidden="true"><path id="listen-icon" d="M4 2.5v11l9-5.5z"/></svg>
-            <span id="listen-label">Listen</span>
-          </button>
-          <div class="eq eq-sm" data-bars="5" aria-hidden="true"></div>
-        </div>
-        <div class="sheet-body">
-          <p class="sheet-title">Notes on slow reading</p>
-          <p id="sample">The eye tires before the mind does. A page that is easy on the eyes lets your attention stay on the words. Change the mode at the top of this page and watch the whole room change with it.</p>
-        </div>
-      </div>
-    </section>
+  <!-- LEFT: title + control hint (no card duplicated here) -->
+  <div class="arc-left">
+    <p class="eyebrow">FIELD BRIEFING</p>
+    <h2 class="why-noor-title">Five things worth knowing<br>before you hire a web design agency</h2>
+    <p class="arc-hint"><span class="arc-hint-icon">↻</span> Learn what matters most for business websites, SEO, conversion rate, and long-term digital growth before you commit.</p>
+  </div>
 
-    <section id="features" aria-labelledby="features-title">
-      <div class="section-head">
-        <h2 id="features-title">Everything Clarity does</h2>
-        <p>A small set of tools, each built to stay out of your way. Five highlights first, then the <a href="#all-features">full feature list</a>.</p>
-      </div>
+  <!-- RIGHT: the ring itself — cards are injected here by JS -->
+  <div class="arc-scene" id="arc-scene"></div>
 
-      <div class="bento">
-        <article class="tile tile-modes">
-          <h3>Three modes, three backdrops</h3>
-          <p>Dark, Bright and Eye care each have their own animated backgrounds, such as Aurora, Clouds and Embers, so the space suits the hour and your eyes. Pick one to try it on this page.</p>
-          <div class="swatches">
-            <button type="button" class="swatch sw-dark" data-swatch="dark" aria-pressed="false"><span class="mini"><b></b><b></b><b></b><b></b><em></em></span><span class="name">Dark</span></button>
-            <button type="button" class="swatch sw-bright" data-swatch="bright" aria-pressed="false"><span class="mini"><b></b><b></b><b></b><b></b><em></em></span><span class="name">Bright</span></button>
-            <button type="button" class="swatch sw-eye" data-swatch="eye" aria-pressed="false"><span class="mini"><b></b><b></b><b></b><b></b><em></em></span><span class="name">Eye care</span></button>
-          </div>
-        </article>
+</section>
 
-        <article class="tile tile-listen">
-          <h3>Reads it aloud</h3>
-          <p>Clarity reads your text using the voices on your device, in:</p>
-          <ul class="chips">
-            <li>English</li><li>French</li><li>Portuguese (Brazil)</li><li>Spanish</li><li>German</li><li>Mandarin Chinese</li>
-          </ul>
-          <p class="note">No English voice on your device? Clarity can download one in a single click.</p>
-          <div class="eq eq-lg" data-bars="22" aria-hidden="true"></div>
-        </article>
+<!-- ================= PRICING — TARIFF SHEET ================= -->
+<section id="pricing" class="tariff">
+  <div class="tariff-head">
+    <p class="eyebrow">ENGAGEMENT MATRIX</p>
+    <h2 class="tariff-title">Website design, development, and SEO pricing</h2>
+    <p class="tariff-sub">Custom web design, website development, SEO optimization, and digital strategy packages built around your business goals and growth targets.</p>
+    <div class="offer-strip festive-only">
+      <span class="offer-strip-title"><span class="offer-pill-dot"></span>FESTIVE SEASON OFFER &mdash; 50% OFF EVERYTHING</span>
+      <span class="offer-strip-sub">Valid till 21st October</span>
+      <span class="offer-timer offer-timer--lg" data-offer-timer aria-hidden="true"></span>
+    </div>
+  </div>
 
-        <article class="tile tile-write">
-          <h3>Write in Markdown</h3>
-          <p>Try it. Type up to 50 characters with simple marks, then press Preview.</p>
-          <div class="editor">
-            <div class="editor-frame">
-              <div class="tabs" role="tablist" aria-label="Write or preview">
-                <button type="button" role="tab" id="md-tab-write" aria-selected="true" aria-controls="md-panel-write">Write</button>
-                <button type="button" role="tab" id="md-tab-preview" aria-selected="false" aria-controls="md-panel-preview" tabindex="-1">Preview</button>
-              </div>
-              <div class="md-panel" role="tabpanel" id="md-panel-write" aria-labelledby="md-tab-write">
-                <label class="sr-only" for="md-input">Type Markdown, up to 50 characters</label>
-                <textarea id="md-input" maxlength="50" rows="4" spellcheck="false" autocomplete="off" autocapitalize="off" aria-describedby="md-count md-hint">## Plan
-**Decide** by Friday
-- Send the draft</textarea>
-                <div class="md-meta">
-                  <p id="md-hint">Try # for a heading, **bold**, *italic* or - for a list.</p>
-                  <p id="md-count"><span id="md-n">45</span> of 50</p>
-                </div>
-              </div>
-              <div class="md-panel" role="tabpanel" id="md-panel-preview" aria-labelledby="md-tab-preview" tabindex="0" hidden>
-                <div class="md-out" id="md-out"></div>
-              </div>
-            </div>
-          </div>
-        </article>
+  <div class="tariff-sheet" id="tariff-sheet">
 
-        <article class="tile tile-export">
-          <h3>Export when you're done</h3>
-          <p>Save your document as a text file, a Markdown file or a PDF. An empty document can't be exported, so you never end up with a blank file.</p>
-          <div class="files" aria-hidden="true"><span class="file txt">.txt</span><span class="file md">.md</span><span class="file pdf">.pdf</span></div>
-        </article>
-
-        <article class="tile tile-offline">
-          <div>
-            <h3>Install it, use it offline</h3>
-            <p>Clarity is a progressive web app. Add it to your home screen or desktop and it keeps working without a connection. The one-click English voice needs a connection the first time you download it.</p>
-          </div>
-          <div class="phone" aria-hidden="true">
-            <span class="mk"></span>
-            <span class="nm">Clarity</span>
-            <span class="st"><svg viewBox="0 0 16 16"><path d="M3 8.5l3.2 3L13 4.5"/></svg>Works offline</span>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <section class="all-features" id="all-features" aria-labelledby="all-title">
-      <div class="section-head">
-        <h2 id="all-title">The full feature list</h2>
-        <p>The tiles above are the highlights. Here is everything else Clarity does, group by group.</p>
-      </div>
-      <nav class="jump" aria-label="Feature groups">
-        <ul class="chips">
-          <li><a href="#f-modes">Comfort modes and contrast</a></li>
-          <li><a href="#f-backgrounds">Animated backgrounds</a></li>
-          <li><a href="#f-type">Type and layout</a></li>
-          <li><a href="#f-writing">Writing and editing</a></li>
-          <li><a href="#f-markdown">Markdown</a></li>
-          <li><a href="#f-saving">Saving and your documents</a></li>
-          <li><a href="#f-listen">Listen</a></li>
-          <li><a href="#f-export">Export and copy</a></li>
-          <li><a href="#f-shortcuts">Keyboard shortcuts</a></li>
-          <li><a href="#f-install">Install and offline</a></li>
-          <li><a href="#f-access">Accessibility and small screens</a></li>
+    <div class="tariff-row tariff-row--festive festive-only" data-reveal-row>
+      <span class="fc-corner fc-tl"></span><span class="fc-corner fc-tr"></span>
+      <span class="fc-corner fc-bl"></span><span class="fc-corner fc-br"></span>
+      <span class="tariff-index">FESTIVE PACKAGE</span>
+      <div class="tariff-body">
+        <h3 class="tariff-name">Festive Package</h3>
+        <p class="tariff-desc">Website development, SEO, and 30 days of free maintenance after launch &mdash; everything a business needs to go live and stay sharp, in one package.</p>
+        <ul class="pkg-chips" role="list">
+          <li>Website development</li><li>SEO</li><li>30 days free maintenance</li>
         </ul>
-      </nav>
-      <div class="cats">
-        <article class="cat" id="f-modes" aria-labelledby="f-modes-t">
-          <h3 id="f-modes-t">Comfort modes and contrast</h3>
-          <ul class="feat">
-            <li><b>Three modes</b><span>Dark, Bright and Eye care. Switch any time, and each mode keeps its own settings.</span></li>
-            <li><b>Eye care tuning</b><span>Two sliders set brightness (8 to 60%) and warmth (20 to 55°), so you can cut blue light for night reading.</span></li>
-            <li><b>Live contrast check</b><span>A badge in the header shows how strongly your text stands out from the background, graded AAA, AA or Too low. It updates as you change mode or Eye care levels.</span></li>
-            <li><b>Colors for each mode</b><span>Each mode has its own text, accent, panel and border colors, chosen to stay readable.</span></li>
-          </ul>
-        </article>
-        <article class="cat" id="f-backgrounds" aria-labelledby="f-backgrounds-t">
-          <h3 id="f-backgrounds-t">Animated backgrounds</h3>
-          <ul class="feat">
-            <li><b>Dark mode</b><span>None, Aurora, Stars, Waves, Bubbles or Snowfall.</span></li>
-            <li><b>Bright mode</b><span>None, Clouds, Pastel Drift or Waves.</span></li>
-            <li><b>Eye care mode</b><span>None, Embers, Stars or Snowfall.</span></li>
-            <li><b>One pick per mode</b><span>Clarity remembers the background you chose in each mode.</span></li>
-            <li><b>Behind the text</b><span>The animation sits behind the text card, so it never lowers contrast. Choose None to switch it off.</span></li>
-          </ul>
-        </article>
-        <article class="cat" id="f-type" aria-labelledby="f-type-t">
-          <h3 id="f-type-t">Type and layout</h3>
-          <ul class="feat">
-            <li><b>14 fonts</b><span>System Sans, Atkinson Hyperlegible (easy-read), Inter, Source Sans, System Serif, Lora, Merriweather, Literata, EB Garamond, Playfair Display, IBM Plex Mono, Roboto Mono, Caveat and Comic Neue.</span></li>
-            <li><b>Font size</b><span>From 14px to 32px.</span></li>
-            <li><b>Line spacing</b><span>From tight (1.30) to airy (2.20).</span></li>
-            <li><b>Line width</b><span>From 45 to 95 characters per line, so lines never run too long to follow.</span></li>
-          </ul>
-        </article>
-        <article class="cat" id="f-writing" aria-labelledby="f-writing-t">
-          <h3 id="f-writing-t">Writing and editing</h3>
-          <ul class="feat">
-            <li><b>Paste clean</b><span>Paste plain text or Markdown and no formatting from the source comes along.</span></li>
-            <li><b>Title field</b><span>Name your document, or leave it blank and Clarity names it for you.</span></li>
-            <li><b>Edit and Preview</b><span>Switch between writing and the formatted page. The preview updates as you type.</span></li>
-            <li><b>Word and character count</b><span>Always visible below your settings.</span></li>
-            <li><b>Line breaks kept</b><span>Every time you press Enter, the break stays, so pasted text keeps its shape.</span></li>
-          </ul>
-        </article>
-        <article class="cat" id="f-markdown" aria-labelledby="f-markdown-t">
-          <h3 id="f-markdown-t">Markdown</h3>
-          <ul class="feat">
-            <li><b>Headings</b><span>Three levels, with # marks.</span></li>
-            <li><b>Bold and italic</b><span>Use ** or __ for bold, and * or _ for italic.</span></li>
-            <li><b>Code</b><span>Inline code and fenced code blocks.</span></li>
-            <li><b>Lists</b><span>Bulleted lists with - or *, and numbered lists.</span></li>
-            <li><b>Quotes and dividers</b><span>Blockquotes and horizontal rules.</span></li>
-            <li><b>Links</b><span>Links open in a new tab.</span></li>
-            <li><b>Safe by default</b><span>HTML you type shows up as text and never runs.</span></li>
-          </ul>
-        </article>
-        <article class="cat" id="f-saving" aria-labelledby="f-saving-t">
-          <h3 id="f-saving-t">Saving and your documents</h3>
-          <ul class="feat">
-            <li><b>Save and New</b><span>Save a document, or start a fresh one.</span></li>
-            <li><b>Saved list</b><span>Your documents sit newest first, with how long ago you changed them. Click to open, or press × to delete.</span></li>
-            <li><b>Automatic titles</b><span>No title? Clarity uses the first line, up to 48 characters.</span></li>
-            <li><b>Auto-saved draft</b><span>Your draft saves about a second after you stop typing, and comes back when you return.</span></li>
-            <li><b>Save messages</b><span>Clarity tells you when changes are unsaved, saved, loaded or restored.</span></li>
-            <li><b>Settings remembered</b><span>Mode, fonts, sizes, Eye care levels, backgrounds, language, voice and speed all stay as you left them.</span></li>
-            <li><b>Stays on your device</b><span>Documents and settings live in your browser. There is no account to make. Clearing your browser data removes them, so export anything you want to keep.</span></li>
-            <li><b>Storage warning</b><span>If your browser blocks storage, Clarity says so instead of failing quietly.</span></li>
-          </ul>
-        </article>
-        <article class="cat" id="f-listen" aria-labelledby="f-listen-t">
-          <h3 id="f-listen-t">Listen</h3>
-          <ul class="feat">
-            <li><b>Six languages</b><span>English, French, Portuguese (Brazil), Spanish, German and Mandarin Chinese.</span></li>
-            <li><b>Best voice picked for you</b><span>Clarity ranks the voices on your device and picks the most natural one for the language you choose.</span></li>
-            <li><b>Clear voice status</b><span>Languages with no voice on your device are marked, and Clarity lists which ones are missing.</span></li>
-            <li><b>Advanced voice picker</b><span>Choose a specific voice. Higher-quality voices get a ★, you get a warning if the voice doesn't match your language, and Undo takes you back to the automatic choice.</span></li>
-            <li><b>Free English voice</b><span>No English voice on your device? Download one in a single click (about 90 MB, once). Clarity shows real progress, tests the voice before calling it ready, and offers Retry if it fails.</span></li>
-            <li><b>Speed</b><span>From 0.60x to 1.60x.</span></li>
-            <li><b>Play, pause, resume, stop</b><span>With a status line that says what's happening.</span></li>
-            <li><b>Reads the words, not the marks</b><span>Markdown symbols aren't spoken, code blocks are skipped, and links are read as their text.</span></li>
-            <li><b>Clear fallback</b><span>If your browser can't read aloud, Clarity says so.</span></li>
-          </ul>
-        </article>
-        <article class="cat" id="f-export" aria-labelledby="f-export-t">
-          <h3 id="f-export-t">Export and copy</h3>
-          <ul class="feat">
-            <li><b>Three formats</b><span>Text (.txt), Markdown (.md) and PDF.</span></li>
-            <li><b>PDF that looks like your page</b><span>The PDF uses your current mode colors, font, size and spacing. A title prints only if you typed one.</span></li>
-            <li><b>Copy and Clear</b><span>Copy your text to the clipboard, or clear the editor.</span></li>
-            <li><b>Dated file names</b><span>Files are named from your title, with the date and time added.</span></li>
-            <li><b>No empty files</b><span>An empty document can't be exported, and Clarity tells you why.</span></li>
-          </ul>
-        </article>
-        <article class="cat" id="f-shortcuts" aria-labelledby="f-shortcuts-t">
-          <h3 id="f-shortcuts-t">Keyboard shortcuts</h3>
-          <ul class="feat">
-            <li><b>Save</b><span><kbd>Ctrl/⌘ S</kbd></span></li>
-            <li><b>New document</b><span><kbd>Ctrl/⌘ N</kbd></span></li>
-            <li><b>Export PDF</b><span><kbd>Ctrl/⌘ P</kbd></span></li>
-            <li><b>Download .txt</b><span><kbd>Ctrl/⌘ Shift D</kbd></span></li>
-            <li><b>Download .md</b><span><kbd>Ctrl/⌘ Shift M</kbd></span></li>
-            <li><b>Edit or Preview</b><span><kbd>Ctrl/⌘ E</kbd></span></li>
-            <li><b>Play or pause reading</b><span><kbd>Ctrl/⌘ Shift L</kbd></span></li>
-            <li><b>Dark, Bright or Eye care</b><span><kbd>Ctrl/⌘ 1</kbd> <kbd>2</kbd> <kbd>3</kbd></span></li>
-            <li><b>Show all shortcuts</b><span><kbd>?</kbd> or the ? button in the header. Esc closes it.</span></li>
-          </ul>
-        </article>
-        <article class="cat" id="f-install" aria-labelledby="f-install-t">
-          <h3 id="f-install-t">Install and offline</h3>
-          <ul class="feat">
-            <li><b>Install as an app</b><span>It opens in its own window. Use the Install Clarity button when your browser offers it, or Add to Home Screen on iPhone and iPad.</span></li>
-            <li><b>Works offline</b><span>After you install it, Clarity opens and runs without a connection, even from a cold start.</span></li>
-            <li><b>Updates itself</b><span>When a new version ships, the old saved copy is cleared and the new one takes over.</span></li>
-            <li><b>Home-screen icons</b><span>Icons for phones and desktops, including the rounded kind Android uses.</span></li>
-            <li><b>What needs a connection</b><span>Fonts load from the web, so offline Clarity shows your device's fonts instead. The free English voice needs a connection to download.</span></li>
-          </ul>
-        </article>
-        <article class="cat" id="f-access" aria-labelledby="f-access-t">
-          <h3 id="f-access-t">Accessibility and small screens</h3>
-          <ul class="feat">
-            <li><b>Visible keyboard focus</b><span>A clear outline shows where you are on every button, field and the editor.</span></li>
-            <li><b>Screen reader labels</b><span>Controls such as the mode switch, Edit and Preview, and delete buttons are labeled. The animated background is hidden from screen readers.</span></li>
-            <li><b>Preview you can reach</b><span>You can tab into the preview to scroll it with the keyboard.</span></li>
-            <li><b>Easy-read font</b><span>Atkinson Hyperlegible is one click away in the font list.</span></li>
-            <li><b>Phones and small screens</b><span>On narrow screens the settings move below the editor, so nothing gets squeezed.</span></li>
-          </ul>
-        </article>
       </div>
-    </section>
+      <div class="tariff-price">
+        <span class="price-badge">Valid till 21st October</span>
+        <span class="price-from">Starting at</span>
+        <strong>₹8,500</strong>
+        <span class="price-scale">Grows with your requirements</span>
+      </div>
+    </div>
 
-    <section class="noor" id="noor" aria-labelledby="noor-title">
-      <div class="noor-panel">
-        <div class="noor-intro">
-          <div class="noor-logo" role="img" aria-label="NOOR Productions logo"></div>
-          <h2 id="noor-title">Clarity is a NOOR Productions build.</h2>
-          <p>NOOR Productions is a web design and development studio. We design, build and launch websites and web apps for businesses, and we build them to be found. Clarity is the product we made for ourselves first, to show how we work.</p>
-          <div class="actions">
-            <a class="btn btn-primary" href="https://noor-productions.github.io/noor-productions-site/contact.html">Start a project</a>
-            <a class="btn btn-ghost" href="https://noor-productions.github.io/noor-productions-site/projects.html">See our work</a>
-          </div>
-          <p class="case-link"><a href="case-study.html">Read how we built Clarity</a></p>
-        </div>
+    <div class="tariff-row" data-reveal-row>
+      <span class="fc-corner fc-tl"></span><span class="fc-corner fc-tr"></span>
+      <span class="fc-corner fc-bl"></span><span class="fc-corner fc-br"></span>
+      <span class="tariff-index">01 / WEB DEV</span>
+      <div class="tariff-body">
+        <h3 class="tariff-name">Website Development &amp; Design</h3>
+        <p class="tariff-desc">Business websites, agency portals, and e-commerce storefronts built by hand for performance, credibility, and conversion-focused growth.</p>
+      </div>
+      <div class="tariff-price">
+        <span class="price-was festive-only"><s>₹22,000</s><s>₹10,000</s></span>
+        <span class="price-badge festive-only">50% OFF &middot; Festive Discount</span>
+        <span class="price-from">From</span>
+        <strong data-regular="₹10,000">₹5,000</strong>
+      </div>
+    </div>
 
-        <div>
-          <dl class="proof">
-            <div><dt>6</dt><dd>languages for read-aloud</dd></div>
-            <div><dt>3</dt><dd>comfort modes</dd></div>
-            <div><dt>3</dt><dd>export formats</dd></div>
-          </dl>
-          <p class="points-title">What that means for your project</p>
-          <ul class="noor-points">
-            <li><h3>Works offline</h3><p>A website that behaves like an app, so your customers can keep using it on a weak connection.</p></li>
-            <li><h3>Accessible by default</h3><p>Readable type, strong contrast and visible keyboard focus mean more people can use what we build.</p></li>
-            <li><h3>Tested in real browsers</h3><p>Clarity went through several rounds of testing in real browsers, and every bug we found was fixed before launch.</p></li>
-          </ul>
-        </div>
+    <div class="tariff-row" data-reveal-row>
+      <span class="fc-corner fc-tl"></span><span class="fc-corner fc-tr"></span>
+      <span class="fc-corner fc-bl"></span><span class="fc-corner fc-br"></span>
+      <span class="tariff-index">02 / SOFTWARE DEV</span>
+      <div class="tariff-body">
+        <h3 class="tariff-name">Software Development</h3>
+        <p class="tariff-desc">Custom web applications, admin dashboards, booking and inventory systems built around how you actually work.</p>
       </div>
-    </section>
+      <div class="tariff-price">
+        <span class="price-was festive-only"><s>₹95,000</s><s>₹20,000</s></span>
+        <span class="price-badge festive-only">50% OFF &middot; Festive Discount</span>
+        <span class="price-from">From</span>
+        <strong data-regular="₹20,000">₹10,000</strong>
+      </div>
+    </div>
 
-    <section class="faq" id="faq" aria-labelledby="faq-title">
-      <div class="section-head">
-        <h2 id="faq-title">Questions</h2>
+    <div class="tariff-row" data-reveal-row>
+      <span class="fc-corner fc-tl"></span><span class="fc-corner fc-tr"></span>
+      <span class="fc-corner fc-bl"></span><span class="fc-corner fc-br"></span>
+      <span class="tariff-index">03 / PWA DEV</span>
+      <div class="tariff-body">
+        <h3 class="tariff-name">Progressive Web Apps</h3>
+        <p class="tariff-desc">Installable, offline-capable apps with push notifications — app-store feel, without the app store.</p>
       </div>
-      <div class="faq-list">
-        <details><summary><span class="faq-q">Is Clarity free?</span><span class="faq-icon" aria-hidden="true"></span></summary><div class="faq-body"><p>Yes. Clarity is free to use in your browser.</p></div></details>
-        <details><summary><span class="faq-q">Does Clarity work offline?</span><span class="faq-icon" aria-hidden="true"></span></summary><div class="faq-body"><p>Yes. Install it from your browser's install button, or use Add to Home Screen on an iPhone or iPad, and it keeps working without a connection. The one-click English voice needs a connection the first time you download it.</p></div></details>
-        <details><summary><span class="faq-q">Which languages can Clarity read aloud?</span><span class="faq-icon" aria-hidden="true"></span></summary><div class="faq-body"><p>English, French, Portuguese (Brazil), Spanish, German and Mandarin Chinese, using the voices on your device. If a voice is missing, Clarity tells you. For English, it can download a voice for you in one click.</p></div></details>
-        <details><summary><span class="faq-q">What can I export?</span><span class="faq-icon" aria-hidden="true"></span></summary><div class="faq-body"><p>Text (.txt), Markdown (.md) and PDF. An empty document can't be exported.</p></div></details>
-        <details><summary><span class="faq-q">Do I need an account, and where are my documents kept?</span><span class="faq-icon" aria-hidden="true"></span></summary><div class="faq-body"><p>No account. Your documents, drafts and settings are saved in your browser on your device. Clearing your browser data removes them, so export anything you want to keep.</p></div></details>
-        <details><summary><span class="faq-q">Can I change the font and text size?</span><span class="faq-icon" aria-hidden="true"></span></summary><div class="faq-body"><p>Yes. Pick from 14 fonts, including an easy-read one, then set the size (14 to 32px), line spacing and line width. Clarity remembers your choices.</p></div></details>
-        <details><summary><span class="faq-q">What are the keyboard shortcuts?</span><span class="faq-icon" aria-hidden="true"></span></summary><div class="faq-body"><p>Press ? in Clarity to see them all. They cover saving, new document, PDF export, downloads, Edit and Preview, read-aloud, and switching modes. The full list is in <a href="#f-shortcuts">Keyboard shortcuts</a> above.</p></div></details>
-        <details><summary><span class="faq-q">Who made Clarity?</span><span class="faq-icon" aria-hidden="true"></span></summary><div class="faq-body"><p>Clarity is built and maintained by <a href="#noor">NOOR Productions</a>, a web design and development studio.</p></div></details>
+      <div class="tariff-price">
+        <span class="price-was festive-only"><s>₹25,000</s><s>₹12,000</s></span>
+        <span class="price-badge festive-only">50% OFF &middot; Festive Discount</span>
+        <span class="price-from">From</span>
+        <strong data-regular="₹12,000">₹6,000</strong>
       </div>
-    </section>
+    </div>
+
+    <div class="tariff-row" data-reveal-row>
+      <span class="fc-corner fc-tl"></span><span class="fc-corner fc-tr"></span>
+      <span class="fc-corner fc-bl"></span><span class="fc-corner fc-br"></span>
+      <span class="tariff-index">04 / SEO &amp; OPT</span>
+      <div class="tariff-body">
+        <h3 class="tariff-name">SEO &amp; Website Optimization</h3>
+        <p class="tariff-desc">Technical SEO, on-page optimization, Core Web Vitals, and local search visibility for websites that need stronger rankings and more qualified traffic.</p>
+      </div>
+      <div class="tariff-price">
+        <span class="price-was festive-only"><s>₹18,000</s><s>₹5,000</s></span>
+        <span class="price-badge festive-only">50% OFF &middot; Festive Discount</span>
+        <span class="price-from">From</span>
+        <strong data-regular="₹5,000">₹2,500</strong>
+      </div>
+    </div>
 
   </div>
+
+  <p class="tariff-note">Starting rates shown above. <span class="festive-only">Festive Season Offer: 50% off everything until 21st October. </span>No hidden charges — final pricing is negotiable and depends on your project's actual scope and requirements, confirmed together on a short call.</p>
+</section>
+
+<!-- ================= PORTFOLIO — now the interactive project cube on projects.html ================= -->
+<section id="portfolio" class="deploy-teaser">
+  <div class="deploy-head">
+    <p class="eyebrow">PROJECT ARCHIVE</p>
+    <h2 class="deploy-title">Live web design and development projects</h2>
+    <p class="deploy-hint">Explore recent website launches, business portals, e-commerce experiences, and conversion-focused digital products — now as an interactive project cube.</p>
+  </div>
+  <a class="deploy-teaser-cta" href="projects.html">
+    <span class="deploy-live-dot"></span> ENTER THE PROJECT CUBE <span class="deploy-arrow">→</span>
+  </a>
+</section>
+
+
+<!-- ================= HOW WE WORK — PIPELINE SEQUENCE ================= -->
+<section id="how-we-work" class="pipeline">
+
+  <div class="pipeline-head">
+    <p class="eyebrow">OPERATING PROTOCOL</p>
+    <h2 class="pipeline-title">How we build high-performing websites</h2>
+    <p class="pipeline-sub">A structured process for custom web design, development, SEO, and launch-ready digital experiences.</p>
+  </div>
+
+  <div class="pipeline-track" id="pipeline-track">
+
+    <div class="pipeline-step" data-pipeline-step>
+      <span class="fc-corner fc-tl"></span><span class="fc-corner fc-tr"></span>
+      <span class="fc-corner fc-bl"></span><span class="fc-corner fc-br"></span>
+      <div class="pipeline-step-head">
+        <span class="pipeline-step-num">01</span>
+        <span class="pipeline-phase-tag">BLUEPRINT</span>
+      </div>
+      <h3 class="pipeline-step-title">Rough Design &amp; Blueprint</h3>
+      <p class="pipeline-step-desc">We start with structure, not pixels. Using your direction as the anchor and our own design instincts as the engine, we draft a wireframe — spatial decisions, content hierarchy, interaction logic — before any visual styling begins.</p>
+      <div class="pipeline-step-connector" aria-hidden="true"></div>
+    </div>
+
+    <div class="pipeline-step" data-pipeline-step>
+      <span class="fc-corner fc-tl"></span><span class="fc-corner fc-tr"></span>
+      <span class="fc-corner fc-bl"></span><span class="fc-corner fc-br"></span>
+      <div class="pipeline-step-head">
+        <span class="pipeline-step-num">02</span>
+        <span class="pipeline-phase-tag">CRITIQUE</span>
+      </div>
+      <h3 class="pipeline-step-title">Multi-Agent Design Review</h3>
+      <p class="pipeline-step-desc">The draft goes through a structured critique process — reviewed across different design lenses and use-case scenarios. Weak points are identified and rebuilt before the client ever sees it. This is where most studios skip ahead; we don't.</p>
+      <div class="pipeline-step-connector" aria-hidden="true"></div>
+    </div>
+
+    <div class="pipeline-step" data-pipeline-step>
+      <span class="fc-corner fc-tl"></span><span class="fc-corner fc-tr"></span>
+      <span class="fc-corner fc-bl"></span><span class="fc-corner fc-br"></span>
+      <div class="pipeline-step-head">
+        <span class="pipeline-step-num">03</span>
+        <span class="pipeline-phase-tag">APPROVAL</span>
+      </div>
+      <h3 class="pipeline-step-title">Client Demonstration</h3>
+      <p class="pipeline-step-desc">You see the improved version. We walk through every decision together — what's there, why it's there, and what we're ready to change. The final design is locked only once you've signed off. No surprises in the build.</p>
+      <div class="pipeline-step-connector" aria-hidden="true"></div>
+    </div>
+
+    <div class="pipeline-step" data-pipeline-step>
+      <span class="fc-corner fc-tl"></span><span class="fc-corner fc-tr"></span>
+      <span class="fc-corner fc-bl"></span><span class="fc-corner fc-br"></span>
+      <div class="pipeline-step-head">
+        <span class="pipeline-step-num">04</span>
+        <span class="pipeline-phase-tag">BUILD</span>
+      </div>
+      <h3 class="pipeline-step-title">Programming</h3>
+      <p class="pipeline-step-desc">Development begins against the agreed spec — no theme kits, no page builders. Every component is written by hand to the exact interaction model we designed together. The approved blueprint is what ships to code, not what gets forgotten halfway through.</p>
+      <div class="pipeline-step-connector" aria-hidden="true"></div>
+    </div>
+
+    <div class="pipeline-step" data-pipeline-step>
+      <span class="fc-corner fc-tl"></span><span class="fc-corner fc-tr"></span>
+      <span class="fc-corner fc-bl"></span><span class="fc-corner fc-br"></span>
+      <div class="pipeline-step-head">
+        <span class="pipeline-step-num">05</span>
+        <span class="pipeline-phase-tag">POLISH</span>
+      </div>
+      <h3 class="pipeline-step-title">Final Touches</h3>
+      <p class="pipeline-step-desc">We layer in the details that turn a working site into a finished one — yours and ours. Client-requested refinements come first. Then we add the micro-interactions, transitions, and edge-case handling we know make the difference between delivered and done.</p>
+      <div class="pipeline-step-connector" aria-hidden="true"></div>
+    </div>
+
+    <div class="pipeline-step" data-pipeline-step>
+      <span class="fc-corner fc-tl"></span><span class="fc-corner fc-tr"></span>
+      <span class="fc-corner fc-bl"></span><span class="fc-corner fc-br"></span>
+      <div class="pipeline-step-head">
+        <span class="pipeline-step-num">06</span>
+        <span class="pipeline-phase-tag">AUDIT</span>
+      </div>
+      <h3 class="pipeline-step-title">Security, SEO &amp; Optimisation</h3>
+      <p class="pipeline-step-desc">Full verification pass: security headers, SEO metadata, Core Web Vitals, accessibility, cross-browser rendering, and error checking. Nothing ships with a known gap. This isn't an afterthought — it's a gating step.</p>
+      <div class="pipeline-step-connector" aria-hidden="true"></div>
+    </div>
+
+    <div class="pipeline-step" data-pipeline-step>
+      <span class="fc-corner fc-tl"></span><span class="fc-corner fc-tr"></span>
+      <span class="fc-corner fc-bl"></span><span class="fc-corner fc-br"></span>
+      <div class="pipeline-step-head">
+        <span class="pipeline-step-num">07</span>
+        <span class="pipeline-phase-tag">REFINE</span>
+      </div>
+      <h3 class="pipeline-step-title">Near-Perfect Push</h3>
+      <p class="pipeline-step-desc">We iterate against the audit findings until the product is as close to flawless as the timeline and scope allow. Scores, render quality, interaction feel — everything is benchmarked. Shipping mediocre work isn't an option; it's not what either of us should want on the record.</p>
+      <div class="pipeline-step-connector" aria-hidden="true"></div>
+    </div>
+
+    <div class="pipeline-step" data-pipeline-step>
+      <span class="fc-corner fc-tl"></span><span class="fc-corner fc-tr"></span>
+      <span class="fc-corner fc-bl"></span><span class="fc-corner fc-br"></span>
+      <div class="pipeline-step-head">
+        <span class="pipeline-step-num">08</span>
+        <span class="pipeline-phase-tag">DEPLOY</span>
+      </div>
+      <h3 class="pipeline-step-title">GitHub Publication</h3>
+      <p class="pipeline-step-desc">The finished build goes live via GitHub — version-controlled, documented, and deployed to a stable public URL. Every commit is clean and readable. What goes to your hands is production-grade, not a dev build with promises attached.</p>
+      <div class="pipeline-step-connector" aria-hidden="true"></div>
+    </div>
+
+    <div class="pipeline-step pipeline-step--final" data-pipeline-step>
+      <span class="fc-corner fc-tl"></span><span class="fc-corner fc-tr"></span>
+      <span class="fc-corner fc-bl"></span><span class="fc-corner fc-br"></span>
+      <div class="pipeline-step-head">
+        <span class="pipeline-step-num">09</span>
+        <span class="pipeline-phase-tag">HANDOVER</span>
+      </div>
+      <h3 class="pipeline-step-title">Payment &amp; Full Ownership Transfer</h3>
+      <p class="pipeline-step-desc">Payment confirmed — then every asset, repository, and access credential transfers to you completely. Full ownership. No licensing, no lock-in, no ongoing dependency on us unless you choose it. The work is yours, not ours to hold over you.</p>
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ================= BLOG ================= -->
+<section id="blog" class="blog-section">
+
+  <div class="blog-head">
+    <p class="eyebrow">KNOWLEDGE BASE</p>
+    <h2 class="blog-title">SEO, web design, and growth insights</h2>
+    <p class="blog-sub">Practical guidance for businesses looking to improve website performance, search visibility, trust, and conversion rates.</p>
+  </div>
+
+  <div class="blog-grid" id="blog-grid">
+
+    <article class="blog-card" data-reveal-row>
+      <span class="fc-corner fc-tl"></span><span class="fc-corner fc-tr"></span>
+      <span class="fc-corner fc-bl"></span><span class="fc-corner fc-br"></span>
+      <span class="blog-num">01</span>
+      <div class="blog-card-body">
+        <span class="blog-tag">STRATEGY</span>
+        <h3 class="blog-card-title">Why Every Business Needs a Professional Website in 2026</h3>
+        <p class="blog-card-excerpt">A business without a website is like a shop with no signboard. Discover why your website is now your most valuable business asset — working 24/7, building trust, and reaching customers your competitors miss.</p>
+      </div>
+      <a class="blog-read-btn" href="blog/why-every-business-needs-a-professional-website.html" aria-label="Read full article: see blog 1">READ ARTICLE <span class="deploy-arrow">→</span></a>
+    </article>
+
+    <article class="blog-card" data-reveal-row>
+      <span class="fc-corner fc-tl"></span><span class="fc-corner fc-tr"></span>
+      <span class="fc-corner fc-bl"></span><span class="fc-corner fc-br"></span>
+      <span class="blog-num">02</span>
+      <div class="blog-card-body">
+        <span class="blog-tag">AUDIT</span>
+        <h3 class="blog-card-title">10 Signs Your Business Website Is Costing You Customers</h3>
+        <p class="blog-card-excerpt">Your website should be your best salesperson. Here are ten warning signs it may be quietly pushing visitors away — and what a great business website should do instead.</p>
+      </div>
+      <a class="blog-read-btn" href="blog/10-signs-your-website-is-costing-you-customers.html" aria-label="Read full article: see blog 2">READ ARTICLE <span class="deploy-arrow">→</span></a>
+    </article>
+
+    <article class="blog-card" data-reveal-row>
+      <span class="fc-corner fc-tl"></span><span class="fc-corner fc-tr"></span>
+      <span class="fc-corner fc-bl"></span><span class="fc-corner fc-br"></span>
+      <span class="blog-num">03</span>
+      <div class="blog-card-body">
+        <span class="blog-tag">TRUST</span>
+        <h3 class="blog-card-title">How a Great Website Builds Trust Before You Even Speak to a Customer</h3>
+        <p class="blog-card-excerpt">Trust is often decided before the first conversation. Learn how professional design, clear communication, authentic visuals, and helpful content build confidence before you say a word.</p>
+      </div>
+      <a class="blog-read-btn" href="blog/how-a-great-website-builds-trust.html" aria-label="Read full article: see blog 3">READ ARTICLE <span class="deploy-arrow">→</span></a>
+    </article>
+
+    <article class="blog-card" data-reveal-row>
+      <span class="fc-corner fc-tl"></span><span class="fc-corner fc-tr"></span>
+      <span class="fc-corner fc-bl"></span><span class="fc-corner fc-br"></span>
+      <span class="blog-num">04</span>
+      <div class="blog-card-body">
+        <span class="blog-tag">STRATEGY</span>
+        <h3 class="blog-card-title">Website vs Social Media: Why Your Business Needs Both</h3>
+        <p class="blog-card-excerpt">Social media helps people find you. Your website convinces them to trust you. Neither replaces the other — find out how to make both work together as a complete digital ecosystem.</p>
+      </div>
+      <a class="blog-read-btn" href="blog/website-vs-social-media.html" aria-label="Read full article: see blog 4">READ ARTICLE <span class="deploy-arrow">→</span></a>
+    </article>
+
+    <article class="blog-card" data-reveal-row>
+      <span class="fc-corner fc-tl"></span><span class="fc-corner fc-tr"></span>
+      <span class="fc-corner fc-bl"></span><span class="fc-corner fc-br"></span>
+      <span class="blog-num">05</span>
+      <div class="blog-card-body">
+        <span class="blog-tag">PERFORMANCE</span>
+        <h3 class="blog-card-title">How Fast Website Speed Can Increase Sales and Customer Trust</h3>
+        <p class="blog-card-excerpt">Every extra second your website takes to load is a customer lost. Explore why speed is your first impression, how it builds trust, and what commonly slows websites down.</p>
+      </div>
+      <a class="blog-read-btn" href="blog/website-speed-and-sales.html" aria-label="Read full article: see blog 5">READ ARTICLE <span class="deploy-arrow">→</span></a>
+    </article>
+
+    <article class="blog-card" data-reveal-row>
+      <span class="fc-corner fc-tl"></span><span class="fc-corner fc-tr"></span>
+      <span class="fc-corner fc-bl"></span><span class="fc-corner fc-br"></span>
+      <span class="blog-num">06</span>
+      <div class="blog-card-body">
+        <span class="blog-tag">DESIGN</span>
+        <h3 class="blog-card-title">Why Responsive Web Design Is No Longer Optional</h3>
+        <p class="blog-card-excerpt">Most customers discover you on their phone. If your website isn't built for every screen size, you're losing them before they see your first word. Here's what responsive design really means.</p>
+      </div>
+      <a class="blog-read-btn" href="blog/responsive-web-design-is-not-optional.html" aria-label="Read full article: see blog 6">READ ARTICLE <span class="deploy-arrow">→</span></a>
+    </article>
+
+    <article class="blog-card" data-reveal-row>
+      <span class="fc-corner fc-tl"></span><span class="fc-corner fc-tr"></span>
+      <span class="fc-corner fc-bl"></span><span class="fc-corner fc-br"></span>
+      <span class="blog-num">07</span>
+      <div class="blog-card-body">
+        <span class="blog-tag">CONVERSION</span>
+        <h3 class="blog-card-title">What Makes a High-Converting Business Website?</h3>
+        <p class="blog-card-excerpt">Getting visitors is only half the battle. A high-converting website turns curiosity into action — through clear purpose, strong trust signals, smart calls to action, and design built around your customer.</p>
+      </div>
+      <a class="blog-read-btn" href="blog/what-makes-a-high-converting-website.html" aria-label="Read full article: see blog 7">READ ARTICLE <span class="deploy-arrow">→</span></a>
+    </article>
+
+    <article class="blog-card" data-reveal-row>
+      <span class="fc-corner fc-tl"></span><span class="fc-corner fc-tr"></span>
+      <span class="fc-corner fc-bl"></span><span class="fc-corner fc-br"></span>
+      <span class="blog-num">08</span>
+      <div class="blog-card-body">
+        <span class="blog-tag">CONTENT</span>
+        <h3 class="blog-card-title">Why Your Business Should Start a Blog (Even If You Think Nobody Will Read It)</h3>
+        <p class="blog-card-excerpt">A blog isn't just content — it's a 24/7 marketing engine. Discover how consistent publishing builds trust, improves search visibility, and turns your expertise into your most powerful sales tool.</p>
+      </div>
+      <a class="blog-read-btn" href="blog/why-your-business-should-start-a-blog.html" aria-label="Read full article: see blog 8">READ ARTICLE <span class="deploy-arrow">→</span></a>
+    </article>
+
+    <article class="blog-card" data-reveal-row>
+      <span class="fc-corner fc-tl"></span><span class="fc-corner fc-tr"></span>
+      <span class="fc-corner fc-bl"></span><span class="fc-corner fc-br"></span>
+      <span class="blog-num">09</span>
+      <div class="blog-card-body">
+        <span class="blog-tag">MAINTENANCE</span>
+        <h3 class="blog-card-title">Website Maintenance: Why Launching Your Website Is Only the Beginning</h3>
+        <p class="blog-card-excerpt">A launched website is a living business asset — not a finished project. Learn why ongoing maintenance is essential for security, speed, credibility, and long-term growth.</p>
+      </div>
+      <a class="blog-read-btn" href="blog/website-maintenance-matters.html" aria-label="Read full article: see blog 9">READ ARTICLE <span class="deploy-arrow">→</span></a>
+    </article>
+
+    <article class="blog-card" data-reveal-row>
+      <span class="fc-corner fc-tl"></span><span class="fc-corner fc-tr"></span>
+      <span class="fc-corner fc-bl"></span><span class="fc-corner fc-br"></span>
+      <span class="blog-num">10</span>
+      <div class="blog-card-body">
+        <span class="blog-tag">DESIGN</span>
+        <h3 class="blog-card-title">How Custom Website Design Gives Your Business a Competitive Advantage</h3>
+        <p class="blog-card-excerpt">Templates make businesses look the same. A custom website tells your story, reflects your brand, performs better, and gives customers confidence before any conversation begins.</p>
+      </div>
+      <a class="blog-read-btn" href="blog/custom-website-design-competitive-advantage.html" aria-label="Read full article: see blog 10">READ ARTICLE <span class="deploy-arrow">→</span></a>
+    </article>
+
+  </div>
+</section>
+
+<!-- ================= TESTIMONIALS ================= -->
+<section id="testimonials" class="testimonials-section">
+
+  <div class="testimonials-head">
+    <p class="eyebrow">CLIENT FEEDBACK</p>
+    <h2 class="testimonials-title">Testimonials</h2>
+    <p class="testimonials-sub">Every review here comes from a verified NOOR Productions client — no exceptions.</p>
+  </div>
+
+  <div class="testimonials-grid" id="testimonials-grid">
+    <div class="testimonials-empty" id="testimonials-empty">
+      No reviews yet — be the first verified client to leave one.
+    </div>
+  </div>
+
+  <div class="write-feedback-block">
+    <button class="write-feedback-btn" id="write-feedback-btn">WRITE A FEEDBACK <span class="deploy-arrow">&rarr;</span></button>
+    <p class="write-feedback-note">To leave a review you must be a verified client, and signed up via Google.</p>
+
+    <button class="google-signin-btn" id="google-signin-btn">
+      <span class="google-signin-dot"></span>SIGN UP WITH GOOGLE
+    </button>
+  </div>
+
+  <div class="review-modal-overlay" id="review-modal-overlay">
+    <div class="review-modal">
+      <button class="review-modal-close" id="review-modal-close" aria-label="Close">&times;</button>
+      <h3 class="review-modal-title" id="review-modal-title">Write your review</h3>
+      <input type="text" id="review-name-input" class="review-modal-input" placeholder="Your name / business name" maxlength="80" />
+      <div class="review-modal-stars" id="review-rating-input" role="radiogroup" aria-label="Star rating">
+        <button type="button" class="star-btn" data-value="1" aria-label="1 star">★</button>
+        <button type="button" class="star-btn" data-value="2" aria-label="2 stars">★</button>
+        <button type="button" class="star-btn" data-value="3" aria-label="3 stars">★</button>
+        <button type="button" class="star-btn" data-value="4" aria-label="4 stars">★</button>
+        <button type="button" class="star-btn" data-value="5" aria-label="5 stars">★</button>
+      </div>
+      <textarea id="review-quote-input" class="review-modal-textarea" placeholder="Share your experience working with NOOR Productions..." maxlength="600"></textarea>
+      <div class="review-modal-actions">
+        <button class="review-modal-submit" id="review-modal-submit">SUBMIT REVIEW <span class="deploy-arrow">&rarr;</span></button>
+      </div>
+      <p class="review-modal-status" id="review-modal-status"></p>
+    </div>
+  </div>
+
+</section>
+
+<!-- ================= FAQ ================= -->
+<section id="faq" class="faq-section">
+
+  <div class="faq-head">
+    <p class="eyebrow">COMMON QUESTIONS</p>
+    <h2 class="faq-title">Frequently asked<br>questions</h2>
+    <p class="faq-sub">Everything businesses usually ask us before starting a project. Can't find your answer here? Reach out directly.</p>
+  </div>
+
+  <div class="faq-grid" id="faq-grid">
+
+    <details class="faq-item" data-reveal-row>
+      <summary class="faq-question">
+        <span class="faq-q-num">01</span>
+        <span class="faq-q-text">How long does it take to build a website?</span>
+        <span class="faq-toggle-icon"></span>
+      </summary>
+      <div class="faq-answer">
+        <p>Most business websites take between 3 and 6 weeks from kickoff to launch, depending on scope. A simple one-page site can be ready in under two weeks, while larger multi-page or e-commerce builds can take 6-8 weeks. We&#x27;ll give you a firm timeline after our first briefing call.</p>
+      </div>
+    </details>
+
+    <details class="faq-item" data-reveal-row>
+      <summary class="faq-question">
+        <span class="faq-q-num">02</span>
+        <span class="faq-q-text">How much does a website cost?</span>
+        <span class="faq-toggle-icon"></span>
+      </summary>
+      <div class="faq-answer">
+        <p>Pricing starts from ₹10,000 for website development (₹5,000 during our Festive Season Offer, 50% off everything until 21st October) and varies based on pages, features, SEO scope, and design complexity. Check our Pricing section for a full breakdown, or reach out for a custom quote tailored to your project.</p>
+      </div>
+    </details>
+
+    <details class="faq-item" data-reveal-row>
+      <summary class="faq-question">
+        <span class="faq-q-num">03</span>
+        <span class="faq-q-text">What&#x27;s included in the price?</span>
+        <span class="faq-toggle-icon"></span>
+      </summary>
+      <div class="faq-answer">
+        <p>Every project includes design, development, mobile responsiveness, basic SEO setup, and a full personal review before launch. Hosting, domain registration, and ongoing maintenance are available as add-ons if you&#x27;d like us to manage them for you.</p>
+      </div>
+    </details>
+
+    <details class="faq-item" data-reveal-row>
+      <summary class="faq-question">
+        <span class="faq-q-num">04</span>
+        <span class="faq-q-text">Do I own the website once it&#x27;s built?</span>
+        <span class="faq-toggle-icon"></span>
+      </summary>
+      <div class="faq-answer">
+        <p>Yes. Once the final payment is made, you own the website, its code, and all its content outright. We don&#x27;t lock you into proprietary platforms or hold your site hostage.</p>
+      </div>
+    </details>
+
+    <details class="faq-item" data-reveal-row>
+      <summary class="faq-question">
+        <span class="faq-q-num">05</span>
+        <span class="faq-q-text">Will my website work on mobile phones?</span>
+        <span class="faq-toggle-icon"></span>
+      </summary>
+      <div class="faq-answer">
+        <p>Absolutely. Every website we build is fully responsive, meaning it adapts to phones, tablets, and desktops automatically. We test across real devices before handing anything off.</p>
+      </div>
+    </details>
+
+    <details class="faq-item" data-reveal-row>
+      <summary class="faq-question">
+        <span class="faq-q-num">06</span>
+        <span class="faq-q-text">Do you offer website maintenance after launch?</span>
+        <span class="faq-toggle-icon"></span>
+      </summary>
+      <div class="faq-answer">
+        <p>Yes. We offer ongoing maintenance plans covering updates, security monitoring, backups, and small content changes. You can also choose to manage the site yourself — we&#x27;ll hand over everything you need.</p>
+      </div>
+    </details>
+
+    <details class="faq-item" data-reveal-row>
+      <summary class="faq-question">
+        <span class="faq-q-num">07</span>
+        <span class="faq-q-text">Can I update the website content myself?</span>
+        <span class="faq-toggle-icon"></span>
+      </summary>
+      <div class="faq-answer">
+        <p>Yes, if you&#x27;d like a content management system (CMS), we can build your site so you can edit text, images, and blog posts without touching any code. Just let us know during planning.</p>
+      </div>
+    </details>
+
+    <details class="faq-item" data-reveal-row>
+      <summary class="faq-question">
+        <span class="faq-q-num">08</span>
+        <span class="faq-q-text">Do you review the website before it&#x27;s handed over?</span>
+        <span class="faq-toggle-icon"></span>
+      </summary>
+      <div class="faq-answer">
+        <p>Yes — I personally review every website myself, end to end, until it&#x27;s fully polished. Layout, content, responsiveness, performance — I go through it all before you ever see a rough draft. There&#x27;s no fixed cap on &#x27;revision rounds&#x27;; I keep refining on my own until it&#x27;s right, then walk you through the finished result.</p>
+      </div>
+    </details>
+
+    <details class="faq-item" data-reveal-row>
+      <summary class="faq-question">
+        <span class="faq-q-num">09</span>
+        <span class="faq-q-text">Do you design the website or just build it?</span>
+        <span class="faq-toggle-icon"></span>
+      </summary>
+      <div class="faq-answer">
+        <p>Both. We handle everything from visual design and brand alignment to development, testing, and launch. You won&#x27;t need to hire a separate designer and developer.</p>
+      </div>
+    </details>
+
+    <details class="faq-item" data-reveal-row>
+      <summary class="faq-question">
+        <span class="faq-q-num">10</span>
+        <span class="faq-q-text">What if I already have a logo and brand guidelines?</span>
+        <span class="faq-toggle-icon"></span>
+      </summary>
+      <div class="faq-answer">
+        <p>Even better. We&#x27;ll build your website around your existing brand identity — colors, fonts, and tone — to keep everything consistent across your business.</p>
+      </div>
+    </details>
+
+    <details class="faq-item" data-reveal-row>
+      <summary class="faq-question">
+        <span class="faq-q-num">11</span>
+        <span class="faq-q-text">What if I don&#x27;t have a logo or brand yet?</span>
+        <span class="faq-toggle-icon"></span>
+      </summary>
+      <div class="faq-answer">
+        <p>That&#x27;s fine too. We can help you shape a simple visual identity as part of the project, or point you toward the right direction before we start building.</p>
+      </div>
+    </details>
+
+    <details class="faq-item" data-reveal-row>
+      <summary class="faq-question">
+        <span class="faq-q-num">12</span>
+        <span class="faq-q-text">Will my website show up on Google?</span>
+        <span class="faq-toggle-icon"></span>
+      </summary>
+      <div class="faq-answer">
+        <p>We build every site with SEO fundamentals in place — clean code, fast load times, proper headings, metadata, and technical structure. Ranking well over time also depends on content, backlinks, and consistency, which we can advise on separately.</p>
+      </div>
+    </details>
+
+    <details class="faq-item" data-reveal-row>
+      <summary class="faq-question">
+        <span class="faq-q-num">13</span>
+        <span class="faq-q-text">Do you build online stores / e-commerce sites?</span>
+        <span class="faq-toggle-icon"></span>
+      </summary>
+      <div class="faq-answer">
+        <p>Yes, we build e-commerce fronts with product listings, cart, and checkout functionality. Let us know your expected catalog size and payment gateway preferences so we can scope it properly.</p>
+      </div>
+    </details>
+
+    <details class="faq-item" data-reveal-row>
+      <summary class="faq-question">
+        <span class="faq-q-num">14</span>
+        <span class="faq-q-text">Can you redesign my existing website instead of building from scratch?</span>
+        <span class="faq-toggle-icon"></span>
+      </summary>
+      <div class="faq-answer">
+        <p>Yes. We regularly redesign outdated sites — improving speed, structure, SEO performance, and visual design while keeping the content and search history that already works in your favor.</p>
+      </div>
+    </details>
+
+    <details class="faq-item" data-reveal-row>
+      <summary class="faq-question">
+        <span class="faq-q-num">15</span>
+        <span class="faq-q-text">Who pays for hosting and domain?</span>
+        <span class="faq-toggle-icon"></span>
+      </summary>
+      <div class="faq-answer">
+        <p>You handle your own hosting and domain purchase — that keeps the account fully in your name and keeps your costs down. I&#x27;ll guide you through picking and connecting everything during the build, but I don&#x27;t take on ongoing hosting or domain management as a service — my time stays focused on design and development work.</p>
+      </div>
+    </details>
+
+    <details class="faq-item" data-reveal-row>
+      <summary class="faq-question">
+        <span class="faq-q-num">16</span>
+        <span class="faq-q-text">How do payments work?</span>
+        <span class="faq-toggle-icon"></span>
+      </summary>
+      <div class="faq-answer">
+        <p>We typically work with a 50% deposit to begin the project and the remaining balance due at launch. For larger projects, we can split payments into milestones — this gets confirmed in your project agreement.</p>
+      </div>
+    </details>
+
+    <details class="faq-item" data-reveal-row>
+      <summary class="faq-question">
+        <span class="faq-q-num">17</span>
+        <span class="faq-q-text">What if I need to cancel the project midway?</span>
+        <span class="faq-toggle-icon"></span>
+      </summary>
+      <div class="faq-answer">
+        <p>We understand plans change. If a project is cancelled after work has started, you&#x27;re billed only for the work completed up to that point, based on the agreed milestones.</p>
+      </div>
+    </details>
+
+    <details class="faq-item" data-reveal-row>
+      <summary class="faq-question">
+        <span class="faq-q-num">18</span>
+        <span class="faq-q-text">How do we communicate during the project?</span>
+        <span class="faq-toggle-icon"></span>
+      </summary>
+      <div class="faq-answer">
+        <p>We keep it simple — email and WhatsApp/calls for quick updates, with milestone check-ins so you always know where things stand. No project management software to learn.</p>
+      </div>
+    </details>
+
+    <details class="faq-item" data-reveal-row>
+      <summary class="faq-question">
+        <span class="faq-q-num">19</span>
+        <span class="faq-q-text">What industries do you typically work with?</span>
+        <span class="faq-toggle-icon"></span>
+      </summary>
+      <div class="faq-answer">
+        <p>Our live portfolio spans local retail and e-commerce — a pharmacy, a neighbourhood general store, and a fashion boutique — each built as a full ordering experience, not just a brochure site. If your business sells products or services and needs a website that actually converts visitors into customers, we&#x27;re a strong fit.</p>
+      </div>
+    </details>
+
+    <details class="faq-item" data-reveal-row>
+      <summary class="faq-question">
+        <span class="faq-q-num">20</span>
+        <span class="faq-q-text">What happens after my website goes live?</span>
+        <span class="faq-toggle-icon"></span>
+      </summary>
+      <div class="faq-answer">
+        <p>We do a final walkthrough, hand over any logins and files you need, and stay available for support. If you&#x27;re on a maintenance plan, we continue monitoring and updating the site for you.</p>
+      </div>
+    </details>
+
+  </div>
+</section>
+
+
+<!-- ================= CONTACT ================= -->
+<section id="contact" class="contact-section" style="background: var(--void);">
+<div class="contact-head">
+    <p class="eyebrow">GET IN TOUCH</p>
+    <h2 class="contact-title">Let's build a website that ranks, converts, and grows.</h2>
+    <p class="contact-sub">Tell us about your business, target audience, and digital goals — we’ll help you plan a custom web design, SEO, and development solution that fits.</p>
+  </div>
+
+  <div class="contact-grid">
+
+    <!-- Direct links -->
+    <div class="contact-links">
+      <a class="contact-link-item" href="mailto:noorproductions.as@gmail.com" aria-label="Email NOOR Productions">
+        <span class="contact-link-icon">@</span>
+        <span class="contact-link-text">
+          <span class="contact-link-label">Email</span>
+          <span class="contact-link-value">noorproductions.as@gmail.com</span>
+        </span>
+      </a>
+      <a class="contact-link-item" href="https://instagram.com/noorproductions.official" target="_blank" rel="noopener noreferrer" aria-label="NOOR Productions on Instagram">
+        <span class="contact-link-icon">IG</span>
+        <span class="contact-link-text">
+          <span class="contact-link-label">Instagram</span>
+          <span class="contact-link-value">@noorproductions.official</span>
+        </span>
+      </a>
+      <a class="contact-link-item" href="https://www.youtube.com/@noorproductions.official" target="_blank" rel="noopener noreferrer" aria-label="NOOR Productions on YouTube">
+        <span class="contact-link-icon">YT</span>
+        <span class="contact-link-text">
+          <span class="contact-link-label">YouTube</span>
+          <span class="contact-link-value">@noorproductions.official</span>
+        </span>
+      </a>
+      <a class="contact-link-item" href="https://whatsapp.com/channel/0029VbDi8fGE50Up8BkVRQ29" target="_blank" rel="noopener noreferrer" aria-label="NOOR Productions WhatsApp community">
+        <span class="contact-link-icon">WA</span>
+        <span class="contact-link-text">
+          <span class="contact-link-label">WhatsApp Community</span>
+          <span class="contact-link-value">Join the channel</span>
+        </span>
+      </a>
+      <a class="contact-link-item" href="https://x.com/NP_Founder" target="_blank" rel="noopener noreferrer" aria-label="NOOR Productions founder on X">
+        <span class="contact-link-icon">X</span>
+        <span class="contact-link-text">
+          <span class="contact-link-label">X</span>
+          <span class="contact-link-value">@NP_Founder</span>
+        </span>
+      </a>
+      <a class="contact-link-item" href="https://reddit.com/u/NOOR_Productions" target="_blank" rel="noopener noreferrer" aria-label="NOOR Productions on Reddit">
+        <span class="contact-link-icon">R/</span>
+        <span class="contact-link-text">
+          <span class="contact-link-label">Reddit</span>
+          <span class="contact-link-value">u/NOOR_Productions</span>
+        </span>
+      </a>
+    </div>
+
+    <!-- Contact form — sends via EmailJS, see js/contact.js -->
+    <form class="contact-form" id="contact-form" novalidate>
+      <div class="contact-row-2">
+        <div class="contact-field">
+          <label for="contact-name">Name</label>
+          <input type="text" id="contact-name" name="name" required autocomplete="name" maxlength="100">
+        </div>
+        <div class="contact-field">
+          <label for="contact-email">Email</label>
+          <input type="email" id="contact-email" name="email" required autocomplete="email" maxlength="150">
+        </div>
+      </div>
+
+      <div class="contact-field">
+        <label for="contact-project-type">Project type</label>
+        <select id="contact-project-type" name="projectType" required>
+          <option value="" selected>Select one</option>
+          <option value="new-website">New website</option>
+          <option value="redesign">Redesign an existing website</option>
+          <option value="ecommerce">E-commerce / online store</option>
+          <option value="other">Something else</option>
+        </select>
+      </div>
+
+      <div class="contact-field">
+        <label for="contact-message">Message</label>
+        <textarea id="contact-message" name="message" required placeholder="Tell us about your business and what you're looking for..." maxlength="2000"></textarea>
+      </div>
+
+      <button type="submit" class="contact-submit-btn">SEND MESSAGE <span class="deploy-arrow">&rarr;</span></button>
+      <p class="contact-form-status" id="contact-form-status" role="status" aria-live="polite"></p>
+    </form>
+
+  </div>
+
+  <div class="contact-legal-row">
+    <a href="terms.html">Terms &amp; Conditions</a>
+    <a href="privacy.html">Privacy Policy</a>
+  </div>
+
+</section>
+
 </main>
 
-<footer>
-  <div class="wrap">
-    <span class="who"><i aria-hidden="true"></i>&copy; 2026 NOOR Productions</span>
-    <a href="https://noor-productions.github.io/noor-productions-site/">Visit the NOOR Productions site</a>
+<!-- ================= READING MODAL (double-click target) ================= -->
+<div class="card-modal" id="card-modal" aria-hidden="true">
+  <div class="card-modal-backdrop" id="card-modal-backdrop"></div>
+  <div class="card-modal-panel" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <button class="card-modal-close" id="card-modal-close" aria-label="Close">&times;</button>
+    <span class="fc-index" id="modal-index"></span>
+    <h3 class="card-modal-title" id="modal-title"></h3>
+    <p class="card-modal-body" id="modal-body"></p>
   </div>
-</footer>
+</div>
 
+<script>
+/* ---- Blog grid scroll reveal ---- */
+(function(){
+  if(window.gsap && window.ScrollTrigger){
+    gsap.registerPlugin(ScrollTrigger);
+    const cards = document.querySelectorAll('#blog-grid .blog-card');
+    gsap.set(cards, { opacity:0, y:32 });
+    ScrollTrigger.create({
+      trigger: '#blog',
+      start: 'top 80%',
+      onEnter: () => gsap.to(cards, { opacity:1, y:0, duration:0.55, stagger:0.07, ease:'power3.out' })
+    });
+  }
+})();
 
-<script src="script.js"></script>
+/* ---- FAQ grid scroll reveal ---- */
+(function(){
+  if(window.gsap && window.ScrollTrigger){
+    gsap.registerPlugin(ScrollTrigger);
+    const items = document.querySelectorAll('#faq-grid .faq-item');
+    gsap.set(items, { opacity:0, y:24 });
+    ScrollTrigger.create({
+      trigger: '#faq',
+      start: 'top 80%',
+      onEnter: () => gsap.to(items, { opacity:1, y:0, duration:0.5, stagger:0.05, ease:'power3.out' })
+    });
+  }
+})();
+</script>
+
+<script>
+/* ---- Sticky nav: scroll-triggered reveal + active section highlight ---- */
+(function(){
+  const nav     = document.getElementById('site-nav');
+  const burger  = document.getElementById('nav-burger');
+  const drawer  = document.getElementById('nav-drawer');
+  const overlay = document.getElementById('nav-overlay');
+  const links   = document.querySelectorAll('.nav-links a, .nav-drawer-links a[href^="#"]');
+  const sections = ['why-noor','pricing','portfolio','how-we-work','blog','testimonials','faq','contact'];
+
+  /* Show/hide nav on scroll */
+  let lastY = 0, ticking = false;
+  function onScroll(){
+    const y = window.scrollY;
+    if(y > 80){
+      nav.classList.add('nav--visible');
+    } else {
+      nav.classList.remove('nav--visible');
+    }
+
+    /* Active link */
+    let active = null;
+    sections.forEach(id => {
+      const el = document.getElementById(id);
+      if(!el) return;
+      if(el.getBoundingClientRect().top <= 120) active = id;
+    });
+    links.forEach(a => {
+      const href = a.getAttribute('href');
+      a.classList.toggle('is-active', href === '#' + active);
+    });
+
+    lastY = y; ticking = false;
+  }
+  window.addEventListener('scroll', () => { if(!ticking){ requestAnimationFrame(onScroll); ticking=true; } }, {passive:true});
+
+  /* Mobile burger */
+  function openDrawer(){
+    drawer.classList.add('is-open');
+    overlay.classList.add('is-open');
+    burger.setAttribute('aria-expanded','true');
+    drawer.setAttribute('aria-hidden','false');
+    overlay.setAttribute('aria-hidden','false');
+    burger.classList.add('is-open');
+  }
+  function closeDrawer(){
+    drawer.classList.remove('is-open');
+    overlay.classList.remove('is-open');
+    burger.setAttribute('aria-expanded','false');
+    drawer.setAttribute('aria-hidden','true');
+    overlay.setAttribute('aria-hidden','true');
+    burger.classList.remove('is-open');
+  }
+  burger.addEventListener('click', () => drawer.classList.contains('is-open') ? closeDrawer() : openDrawer());
+  overlay.addEventListener('click', closeDrawer);
+  drawer.querySelectorAll('a').forEach(a => a.addEventListener('click', closeDrawer));
+})();
+</script>
+
+<script type="importmap">
+{
+  "imports": {
+    "three": "./js/vendor/three.module.min.js"
+  }
+}
+</script>
+<script src="js/vendor/gsap.min.js"></script>
+<script src="js/vendor/ScrollTrigger.min.js"></script>
+<script type="module" src="js/main.js"></script>
+
+<!-- Reviews backend: Firebase Auth + Firestore (Spark plan, no Cloud Functions) -->
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script type="module" src="js/reviews.js"></script>
+
+<!-- Contact form: sends via EmailJS, shared with contact.html -->
+<script src="js/contact.js"></script>
+
+<script>
+/* ---- FAQ accordion: smooth expand/collapse for native <details> ---- */
+(function(){
+  const items = document.querySelectorAll('.faq-item');
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduceMotion || !items.length) return;
+
+  items.forEach(function(item){
+    const summary = item.querySelector('summary');
+    const answer = item.querySelector('.faq-answer');
+    if (!summary || !answer) return;
+    let animation = null;
+    let isClosing = false;
+    let isExpanding = false;
+
+    summary.addEventListener('click', function(e){
+      e.preventDefault();
+      item.style.overflow = 'hidden';
+      if (isClosing || !item.open) {
+        openItem();
+      } else if (isExpanding || item.open) {
+        closeItem();
+      }
+    });
+
+    function openItem(){
+      item.open = true;
+      window.requestAnimationFrame(function(){
+        expand();
+      });
+    }
+
+    function closeItem(){
+      isClosing = true;
+      const startHeight = item.offsetHeight;
+      const endHeight = summary.offsetHeight;
+      if (animation) animation.cancel();
+      animation = item.animate(
+        { height: [startHeight + 'px', endHeight + 'px'] },
+        { duration: 260, easing: 'ease' }
+      );
+      animation.onfinish = function(){ onAnimationFinish(false); };
+      animation.oncancel = function(){ isClosing = false; };
+    }
+
+    function expand(){
+      isExpanding = true;
+      const startHeight = item.offsetHeight;
+      const endHeight = summary.offsetHeight + answer.offsetHeight;
+      if (animation) animation.cancel();
+      animation = item.animate(
+        { height: [startHeight + 'px', endHeight + 'px'] },
+        { duration: 260, easing: 'ease' }
+      );
+      animation.onfinish = function(){ onAnimationFinish(true); };
+      animation.oncancel = function(){ isExpanding = false; };
+    }
+
+    function onAnimationFinish(open){
+      item.open = open;
+      animation = null;
+      item.style.height = '';
+      item.style.overflow = '';
+      isClosing = false;
+      isExpanding = false;
+      if (!open) item.open = false;
+    }
+  });
+})();
+</script>
+
 </body>
 </html>
