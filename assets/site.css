@@ -1,7 +1,7 @@
 /* Shared styles: home sections below the hero + service pages.
    One continuous background: dark zones glow, two light "break" zones (soft white, warm ivory) rise into them. */
-@font-face{font-family:'Afteroids Sans';font-style:normal;font-weight:300 800;font-display:swap;src:url(/assets/fonts/AfteroidsSans-VF.woff2) format("woff2")}
-@font-face{font-family:'Afteroids Sans';font-style:italic;font-weight:300 800;font-display:swap;src:url(/assets/fonts/AfteroidsSans-VF-Italic.woff2) format("woff2")}
+@font-face{font-family:'Afteroids Sans';font-style:normal;font-weight:300 800;font-display:swap;src:url(fonts/AfteroidsSans-VF.woff2) format("woff2")}
+@font-face{font-family:'Afteroids Sans';font-style:italic;font-weight:300 800;font-display:swap;src:url(fonts/AfteroidsSans-VF-Italic.woff2) format("woff2")}
 
 :root{
   --obsidian:#06080E;--navy:#0A0F1F;--blue:#536DFE;--blue-d:#2A3CC9;--peri:#8FA0FF;--mist:#D9DFFF;
