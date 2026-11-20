@@ -1,0 +1,169 @@
+/* Additions for the sections built after v5: free-sample form, plan tabs, founders line, 4-column footer.
+   Loaded after site.css and nav.css. Those two files are not edited; every rule here uses a new class name
+   or an element that site.css does not style yet. Colours come from the variables each zone already sets. */
+:root{--err-l:#B3261E;--err-d:#FF9B94}
+[hidden]{display:none!important}
+
+/* ---------- free-sample form ---------- */
+.form{display:grid;gap:22px}
+.field{display:grid;gap:8px}
+.field label{font:600 .88rem/1.3 var(--font);letter-spacing:-.005em;color:var(--fg)}
+.field .opt{font-weight:350;color:var(--mut)}
+.input{display:block;width:100%;min-height:52px;padding:14px 16px;border:0;border-radius:14px;color:var(--fg);
+  font:400 1rem/1.3 var(--font);box-shadow:inset 0 0 0 1px var(--line-2);transition:box-shadow .2s,background .2s}
+.z-dark .input{background-color:rgba(243,244,246,.06)}
+.z-white .input{background-color:rgba(255,255,255,.88);color-scheme:light}
+.input::placeholder{color:var(--mut);opacity:.75}
+.input:hover{box-shadow:inset 0 0 0 1px var(--k)}
+.input:focus-visible{outline:none;box-shadow:inset 0 0 0 2px var(--k),0 0 0 4px rgba(83,109,254,.22);border-radius:14px}
+.input:user-invalid{box-shadow:inset 0 0 0 2px var(--err-d)}
+.z-white .input:user-invalid{box-shadow:inset 0 0 0 2px var(--err-l)}
+.select{appearance:none;-webkit-appearance:none;cursor:pointer;padding-right:44px;background-repeat:no-repeat;background-position:right 16px center;background-size:12px 8px}
+.z-dark .select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5l5 5 5-5' fill='none' stroke='%23F3F4F6' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")}
+.z-white .select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5l5 5 5-5' fill='none' stroke='%230A0F1F' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")}
+.select option{color:#0A0F1F;background:#fff}
+.form .btn{justify-self:start}
+button.btn{appearance:none;-webkit-appearance:none;border:0;cursor:pointer;margin:0}
+.form-msg{padding:16px 18px;border-radius:14px;font:500 .98rem/1.5 var(--font);color:var(--fg);box-shadow:inset 0 0 0 1px var(--line-2)}
+.form-msg[data-kind="ok"]{background:rgba(83,109,254,.12);box-shadow:inset 0 0 0 1px var(--k)}
+.form-msg[data-kind="error"]{box-shadow:inset 0 0 0 1px var(--err-l)}
+.z-dark .form-msg[data-kind="error"]{box-shadow:inset 0 0 0 1px var(--err-d)}
+.sticky .checks{margin-top:28px}
+
+/* ---------- founders line on the home page ---------- */
+.founders-line{margin-bottom:56px;max-width:30em}
+
+/* ---------- plan tabs and cards ---------- */
+.fit>*{min-width:0}
+.tabs{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 28px}
+.tab{display:inline-flex;align-items:center;gap:10px;padding:12px 20px;border-radius:999px;color:var(--fg);
+  font:600 .92rem/1 var(--font);letter-spacing:-.005em;background:rgba(243,244,246,.05);box-shadow:inset 0 0 0 1px var(--line-2);
+  transition:background .2s,color .2s,box-shadow .2s}
+.tab:hover{background:rgba(243,244,246,.1)}
+.tab[aria-selected="true"]{background:linear-gradient(180deg,#6a80ff 0%,var(--blue) 55%,#4a62f2 100%);color:#fff;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.4),inset 0 0 0 1px rgba(255,255,255,.14),0 10px 24px -8px rgba(83,109,254,.55)}
+.tab .tag{font:600 9.5px/1 var(--font);letter-spacing:.14em;text-transform:uppercase;padding:4px 7px;border-radius:999px;box-shadow:inset 0 0 0 1px currentColor;opacity:.85}
+.panel-h{font:600 11px/1 var(--font);letter-spacing:.2em;text-transform:uppercase;color:var(--k);margin-bottom:18px}
+.plans-list h3 a{display:inline-flex;align-items:center;gap:10px;transition:color .2s}
+.plans-list h3 a:hover{color:var(--peri)}
+.plans-list h3 .arrow{width:.55em;height:.55em;color:var(--peri)}
+.plans-list .btn{margin-top:16px}
+.plan-note{margin-top:20px;color:var(--mut);font-size:.92rem;max-width:44em}
+.plan-note b{color:var(--fg);font-weight:600}
+tfoot td{vertical-align:top;border-top:1px solid var(--line);border-bottom:0}
+tfoot small{display:block;margin-bottom:12px;color:var(--mut);font-size:.84rem;line-height:1.4}
+tfoot td{padding-inline:10px}
+tfoot td:first-child{padding-inline:20px}
+tfoot .btn{padding:10px 14px;font-size:12.5px;white-space:nowrap}
+thead th a:hover{color:var(--white)}
+.tbl-wrap table th[scope="row"]{min-width:9em}
+
+/* ---------- closing section lead line (founders page) ---------- */
+.closer .lead{margin-top:18px}
+
+/* ---------- footer: four columns on wide screens ---------- */
+@media (min-width:820px){.foot-grid--4{grid-template-columns:1.5fr 1fr 1fr 1fr}}
+.foot .tagline{max-width:20em}
+.foot-grid--4 nav ul{align-content:start}
+
+/* ---------- nav over light sections ----------
+   The glass slab is see-through with light text, so on white or ivory it disappears.
+   sections.js adds .nav--light while the nav sits over a light section; this dark tint then fades in behind the slab. */
+.nav .slab{position:relative}
+.nav .slab::before{content:"";position:absolute;inset:0;z-index:-1;border-radius:inherit;pointer-events:none;
+  background:linear-gradient(180deg,rgba(17,24,39,.9),rgba(10,15,31,.82));opacity:0;transition:opacity .35s}
+.nav--light .slab::before{opacity:1}
+@media (prefers-reduced-motion:reduce){.nav .slab::before{transition:none}}
+
+/* ---------- ivory headings: same bold face as every other heading ---------- */
+.z-ivory h2,.z-ivory h2 em{font-weight:800;letter-spacing:-.03em}
+
+/* ---------- skip button on the intro ---------- */
+.intro-skip{position:absolute;z-index:2;right:max(20px,env(safe-area-inset-right,0px));bottom:max(24px,env(safe-area-inset-bottom,0px));
+  opacity:0;animation:intro-skip-in .5s .8s ease forwards}
+@keyframes intro-skip-in{to{opacity:1}}
+
+/* ---------- closing section and footer on white ---------- */
+.z-white .lead{color:var(--mut)}
+.foot--light{--fg:var(--ink);--mut:rgba(10,15,31,.68);--line:rgba(10,15,31,.16);--line-2:rgba(10,15,31,.28);
+  color:var(--mut);border-top:1px solid var(--line);
+  background:repeating-linear-gradient(90deg,rgba(10,15,31,.045) 0 1px,transparent 1px 26px),var(--white)}
+.foot--light::before{display:none}
+.foot--light h2,.foot--light .brand,.foot--light a:hover{color:var(--ink)}
+.foot--light .brand i{color:var(--blue)}
+.foot--light .brand img{filter:brightness(.04)}
+.z-white .btn--ghost{color:var(--fg)}
+/* soft join where a white closing section follows an ivory one */
+.from-ivory::before{content:"";position:absolute;left:0;right:0;top:0;height:170px;z-index:1;pointer-events:none;
+  background:linear-gradient(180deg,var(--ivory),rgba(245,239,227,0))}
+
+/* dotted desk illustration: sits behind the footer links, on the light background (navy dots, periwinkle monitor) */
+.desk-illustration{margin:0;background:transparent;border:0;box-shadow:none;pointer-events:none}
+.desk-illustration picture{display:block}
+.desk-illustration img{display:block;width:100%;height:auto;max-width:100%}
+.foot--light{overflow:clip;padding-bottom:70vw}
+.foot--light .desk-illustration{position:absolute;left:0;bottom:-52vw;width:100%;z-index:1}  /* blank bottom of the PNG stays below the page edge */
+@media (min-width:768px){
+  .foot--light{padding-bottom:calc(min(100vw,1024px)*572/1024*.9)}
+  .foot--light .desk-illustration{left:auto;right:0;bottom:0;width:min(100%,1024px)}
+}
+/* footer watermark: horizontal, live aurora fill in the site palette, baseline 2px below the page edge */
+@property --ax{syntax:'<percentage>';inherits:false;initial-value:15%}
+@property --ay{syntax:'<percentage>';inherits:false;initial-value:30%}
+@property --bx{syntax:'<percentage>';inherits:false;initial-value:55%}
+@property --by{syntax:'<percentage>';inherits:false;initial-value:75%}
+@property --cx{syntax:'<percentage>';inherits:false;initial-value:85%}
+@property --cy{syntax:'<percentage>';inherits:false;initial-value:25%}
+@property --dx{syntax:'<percentage>';inherits:false;initial-value:35%}
+@property --dy{syntax:'<percentage>';inherits:false;initial-value:60%}
+.wm.wm--h span{
+  top:auto;bottom:calc(-2px - .14em);      /* font baseline sits .14em above the line box bottom, so caps end 2px past the edge */
+  font-size:calc(100cqw*.071);transform:translateX(-50%);
+  background:
+    radial-gradient(30% 130% at var(--ax) var(--ay),var(--bronze) 0,rgba(179,139,93,.55) 40%,transparent 75%),
+    radial-gradient(34% 140% at var(--bx) var(--by),var(--peri) 0,rgba(143,160,255,.7) 45%,transparent 78%),
+    radial-gradient(30% 130% at var(--cx) var(--cy),var(--navy) 0,rgba(10,15,31,.6) 45%,transparent 78%),
+    radial-gradient(26% 120% at var(--dx) var(--dy),var(--mist) 0,rgba(217,223,255,.5) 40%,transparent 75%),
+    linear-gradient(90deg,var(--blue-d),var(--blue) 50%,var(--blue-d));
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:none}
+@media (prefers-reduced-motion:no-preference){
+  .wm.wm--h span{animation:au-a 5s ease-in-out infinite alternate,au-b 7s ease-in-out infinite alternate,au-c 9s ease-in-out infinite alternate,au-d 6s ease-in-out infinite alternate}
+}
+@keyframes au-a{0%{--ax:-5%;--ay:10%}50%{--ax:50%;--ay:95%}100%{--ax:105%;--ay:25%}}
+@keyframes au-b{0%{--bx:105%;--by:80%}50%{--bx:35%;--by:5%}100%{--bx:-5%;--by:90%}}
+@keyframes au-c{0%{--cx:20%;--cy:100%}50%{--cx:80%;--cy:0%}100%{--cx:105%;--cy:85%}}
+@keyframes au-d{0%{--dx:75%;--dy:10%}50%{--dx:5%;--dy:80%}100%{--dx:100%;--dy:95%}}
+/* footer: no divider, copyright 16px above the very bottom, links grid above the watermark/illustration */
+.foot--light .wrap{position:static;z-index:auto}
+.foot--light .foot-grid{position:relative;z-index:2}
+.foot--light .copy{position:absolute;left:max(var(--pad),calc((100% - var(--wrap))/2));bottom:16px;margin:0;padding:0;border:0;z-index:3;color:var(--ink);font-weight:500}
+
+/* "built by NOOR Productions": nav subline, brand band under the hero, footer credit */
+.nav .brand-t{display:flex;flex-direction:column;gap:4px}
+.nav .brand-t small{font:500 10px/1 var(--nf);letter-spacing:.05em;color:rgba(243,244,246,.62)}
+.byus{padding:56px 0}
+.byus-in{display:flex;align-items:center;gap:28px;flex-wrap:wrap}
+.byus-logo{width:72px;height:72px;flex:none;border-radius:50%}
+.byus-copy{flex:1 1 320px;min-width:0}
+.byus-copy .kicker{margin:0 0 6px}
+.byus-copy p:not(.kicker){margin:0;max-width:46em;color:var(--mut)}
+.byus h2.shine{margin:0 0 8px;font:800 clamp(1.5rem,1rem + 2vw,2.2rem)/1.1 var(--font);letter-spacing:-.01em;color:var(--white);
+  background:linear-gradient(100deg,var(--white) 0 35%,var(--peri) 44%,#fff 50%,var(--bronze) 56%,var(--white) 65% 100%) 100% 0/250% 100% no-repeat;
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+@media (prefers-reduced-motion:no-preference){.byus h2.shine{animation:shine 4.5s linear infinite}}
+@keyframes shine{from{background-position:100% 0}to{background-position:0 0}}
+.byus .btn{flex:none}
+.foot .built{display:flex;align-items:center;gap:10px;margin-top:22px;font-size:.88rem;color:var(--mut)}
+.foot .built img{width:40px;height:40px;flex:none;border-radius:50%}
+.foot .built a{color:var(--ink);font-weight:600;text-decoration:underline;text-underline-offset:3px;text-decoration-color:rgba(10,15,31,.35)}
+.foot .built a:hover{color:var(--blue-d);text-decoration-color:currentColor}
+/* the home page's inline .btn rule outranks .btn--ghost inside dark zones; this restores the outlined button there */
+.z-dark .btn--ghost{background:rgba(243,244,246,.05);box-shadow:inset 0 0 0 1px var(--line-2);text-shadow:none;-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);color:var(--fg,var(--white))}
+.z-dark .btn--ghost:hover{background:rgba(243,244,246,.1);filter:none}
+
+/* "Get a free sample edit": the raised pale button from the home page closing section, reused in every closing section (light zones) */
+.btn.btn--sample{padding:17px 30px;font-weight:550;color:var(--ink);background:rgba(10,15,31,.04);text-shadow:0 1px 1px rgba(10,15,60,.3);
+  -webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.4),inset 0 0 0 1px rgba(255,255,255,.14),0 1px 2px rgba(4,8,40,.55),0 4px 8px -1px rgba(4,8,40,.45),0 12px 20px -6px rgba(4,8,40,.5),0 20px 36px -10px rgba(83,109,254,.6)}
+.btn.btn--sample:hover{background:rgba(10,15,31,.09);filter:none;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.45),inset 0 0 0 1px rgba(255,255,255,.18),0 2px 3px rgba(4,8,40,.5),0 8px 12px -2px rgba(4,8,40,.45),0 18px 28px -6px rgba(4,8,40,.5),0 28px 46px -10px rgba(83,109,254,.7)}
