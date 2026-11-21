@@ -7,7 +7,7 @@ const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(
 const strip = s => s.replace(/<[^>]+>/g, '');
 const url = s => `${SITE}/services/${s.slug}`;
 const ARROW = '<svg class="arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 11.5l7-7M5.5 4.5h6v6"/></svg>';
-const DESK = '<figure class="desk-illustration"><picture><source media="(min-width: 768px)" srcset="/assets/img/dotted-desk-illustration-transparent.png" width="1024" height="572"><img src="/assets/img/dotted-desk-illustration-mobile.png" width="1080" height="1920" alt="Illustration of a man seated at a desk with a computer monitor and keyboard, drawn in dotted lines." loading="lazy" decoding="async"></picture></figure>';
+const DESK = prefix => `<figure class="desk-illustration"><picture><source media="(min-width: 768px)" srcset="${prefix}assets/img/dotted-desk-illustration-transparent.png" width="1024" height="572"><img src="${prefix}assets/img/dotted-desk-illustration-mobile.png" width="1080" height="1920" alt="Illustration of a man seated at a desk with a computer monitor and keyboard, drawn in dotted lines." loading="lazy" decoding="async"></picture></figure>`;
 const ORG_ID = `${SITE}/#organization`;
 
 const org = {
@@ -36,7 +36,7 @@ const nav = (cur) => `<header class="nav nav--static" data-state="open">
   </nav>
 </header>`;
 
-const footer = () => `<footer class="foot foot--light"><div class="wm wm--h" aria-hidden="true"><span>AFTEROIDS VISION</span></div>${DESK}<div class="wrap">
+const footer = (prefix = './') => `<footer class="foot foot--light"><div class="wm wm--h" aria-hidden="true"><span>AFTEROIDS VISION</span></div>${DESK(prefix)}<div class="wrap">
   <div class="foot-grid foot-grid--4">
     <div><a class="brand" href="/"><img src="/nav-mark.png" alt="" width="27" height="22"><span translate="no">Afteroids Vision<i>.</i></span></a><p class="tagline">${esc(footerCopy.tagline)}</p><p class="built"><img src="/assets/img/noor-logo.png" alt="" width="40" height="40"><span>Built by <a href="https://noorproductions.in/" target="_blank" rel="noopener" translate="no">NOOR Productions</a></span></p></div>
     <nav aria-label="Site"><h2>Explore</h2><ul><li><a href="/#work">Work</a></li><li><a href="/#services">Services</a></li><li><a href="/#process">Process</a></li><li><a href="/founders/">Founders</a></li><li><a href="/#faq">Questions</a></li></ul></nav>
@@ -82,7 +82,7 @@ function extra(s, cls) {
   return `<section class="${cls}" aria-labelledby="extra-h"><div class="wrap"><div class="split"><div class="sticky"><p class="kicker">Repurposing</p><h2 id="extra-h">${esc(s.extraH)}</h2></div>${rows(s.extra.map((t, i) => [['Review', 'Re-cut', 'Grow'][i] || 'Step', t]))}</div></div></section>`;
 }
 
-const shell = ({ title, desc, u, graph, main }) => `<!doctype html>
+const shell = ({ title, desc, u, graph, main, assetPrefix = '../../' }) => `<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -107,7 +107,7 @@ ${ld(graph)}
 <a class="skip" href="#main">Skip to content</a>
 ${nav(true)}
 ${main}
-${footer()}
+${footer(assetPrefix)}
 <script src="/assets/sections.js" defer></script>
 </body>
 </html>
@@ -185,7 +185,7 @@ function page(s) {
 
 ${darkGroup}
 </main>`;
-  return shell({ title: s.title, desc: s.desc, u, graph, main });
+  return shell({ title: s.title, desc: s.desc, u, graph, main, assetPrefix: '../../' });
 }
 
 // ---------------------------------------------------------------- shared bits for new sections
@@ -355,7 +355,7 @@ function planPage(g, pl, idx) {
 
 ${closerHtml('from-ivory', `${talkBtn}<a class="btn btn--sample" href="/#sample-form">Get a free sample edit</a><a class="btn btn--ghost" href="${tabHref}">Back to the plans</a>`)}
 </main>`;
-  return shell({ title, desc, u, graph, main });
+  return shell({ title, desc, u, graph, main, assetPrefix: '../../' });
 }
 
 // ---------------------------------------------------------------- founders page
@@ -396,7 +396,7 @@ function foundersPage() {
 
 ${closerHtml('from-ivory', `<a class="btn" href="/#book">Book a call ${ARROW_BTN}</a><a class="btn btn--sample" href="/#sample-form">Get a free sample edit</a>`, founders.closeH, 'Your next video starts here', founders.closeLine)}
 </main>`;
-  return shell({ title: founders.title + ' | Afteroids Vision', desc: founders.desc, u, graph, main });
+  return shell({ title: founders.title + ' | Afteroids Vision', desc: founders.desc, u, graph, main, assetPrefix: '../' });
 }
 
 // ---------------------------------------------------------------- write
@@ -415,7 +415,7 @@ writeFileSync('founders/index.html', foundersPage());
 
 let home = readFileSync('index.html', 'utf8');
 home = home.replace(/<!--SERVICES:START-->[\s\S]*<!--SERVICES:END-->/, () => homeBlock);
-home = home.replace(/<!--FOOTER:START-->[\s\S]*<!--FOOTER:END-->/, () => `<!--FOOTER:START-->${footer()}<!--FOOTER:END-->`);
+home = home.replace(/<!--FOOTER:START-->[\s\S]*<!--FOOTER:END-->/, () => `<!--FOOTER:START-->${footer('./')}<!--FOOTER:END-->`);
 writeFileSync('index.html', home);
 
 const today = new Date().toISOString().slice(0, 10);
