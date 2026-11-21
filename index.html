@@ -92,6 +92,7 @@ a{color:inherit;text-decoration:none}
 .logo-wrap{position:relative;width:min(560px,88vw);height:clamp(210px,31vh,330px);margin-bottom:-4px}
 .logo-wrap canvas{position:relative;display:block;width:100%;height:100%;opacity:0;transition:opacity .45s}
 .logo-wrap.has-3d canvas{opacity:1}
+html.loading .logo-wrap canvas{transition:none}
 .logo-wrap .fallback{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;opacity:0;pointer-events:none}
 .logo-wrap.no-3d .fallback{opacity:1}
 .halo{
@@ -118,6 +119,7 @@ a{color:inherit;text-decoration:none}
 .wordmark{margin:0;font:700 clamp(1.6rem,1.15rem + 1.3vw,2.25rem)/1 var(--brand);letter-spacing:-.02em;color:var(--white);text-shadow:0 0 22px rgba(143,160,255,.5),0 2px 24px rgba(10,15,31,.7)}
 
 /* loader: plays the scissors cut, then hands the A to the hero */
+html{scrollbar-gutter:stable}
 html.loading,html.loading body{overflow:hidden}
 .loader{position:fixed;inset:0;z-index:100;background:#090E1F;overflow:hidden;transition:opacity .45s ease;animation:loaderGone 0s 14s forwards}
 .loader video{
@@ -201,11 +203,11 @@ h1 em{
     <div class="rest" id="navRest">
       <div class="rest-in">
         <ul class="links">
-          <li style="--k:0"><a href="#work">Work</a></li>
-          <li style="--k:1"><a href="#services">Services</a></li>
-          <li style="--k:2"><a href="#process">Process</a></li>
-          <li style="--k:3"><a href="#faq">FAQ</a></li>
-          <li style="--k:4"><a href="#developer">Developer</a></li>
+          <li style="--k:0"><a href="#developer">Developer</a></li>
+          <li style="--k:1"><a href="#work">Work</a></li>
+          <li style="--k:2"><a href="#services">Services</a></li>
+          <li style="--k:3"><a href="#process">Process</a></li>
+          <li style="--k:4"><a href="#faq">FAQ</a></li>
         </ul>
         <div class="cell" style="--k:5"><a class="btn btn--sm" href="#book">Book a call</a></div>
       </div>
@@ -273,16 +275,18 @@ h1 em{
 
   function handoff(){
     var A=window.__A?window.__A():0;
-    var Wv=Math.min(1100,Math.max(innerWidth,560));
+    var vr=vid.getBoundingClientRect(), lr=loader.getBoundingClientRect();
+    var Wv=vr.width||Math.min(1100,Math.max(innerWidth,560));
     var s0=A?(LOGO_W*Wv)/A:1;
     var r=wrap.getBoundingClientRect();
-    var dx=innerWidth/2-(r.left+r.width/2), dy=innerHeight/2-(r.top+r.height/2);
+    var dx=lr.left+lr.width/2-(r.left+r.width/2), dy=lr.top+lr.height/2-(r.top+r.height/2);
     window.__boost=Math.max(1,s0); window.__resize&&window.__resize();
     wrap.style.transition='none';
     wrap.style.transform='translate('+dx+'px,'+dy+'px) scale('+s0+')';
     wrap.getBoundingClientRect();
     requestAnimationFrame(function(){requestAnimationFrame(function(){
       loader.style.opacity='0';                       // the video's A and the 3D A share one spot, so this is a cross-fade
+      sleep(480).then(function(){ loader.style.visibility='hidden'; try{vid.pause()}catch(e){} });   // fade done: hide the video for good
       sleep(380).then(function(){
         wrap.style.transition='transform 1.2s cubic-bezier(.65,0,.2,1)';
         wrap.style.transform='translate(0,0) scale(1)';
@@ -500,7 +504,7 @@ new GLTFLoader().parse(buf, '', gltf => {
   <div class="byus-copy"><p class="kicker">Designed &amp; built by</p><h2 id="by-h" class="shine" translate="no">NOOR Productions</h2><p>A web design studio crafting fast, polished websites, software and web apps for brands that want to stand out. This site was designed and built by us.</p></div>
   <a class="btn btn--ghost" href="https://noorproductions.in/" target="_blank" rel="noopener">Visit NOOR Productions <svg  viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 11.5l7-7M5.5 4.5h6v6"/></svg></a>
 </div></section>
-<section class="z z-dark g-top svc pre" id="services" aria-labelledby="svc-h"><div class="ticker" aria-hidden="true"><div class="ticker-track"><span>Long-form editing ·</span><span>Motion graphics ·</span><span>Color and finishing ·</span><span>Sound ·</span><span>Animated captions ·</span><span>Channel management ·</span><span>Long-form editing ·</span><span>Motion graphics ·</span><span>Color and finishing ·</span><span>Sound ·</span><span>Animated captions ·</span><span>Channel management ·</span><span>Long-form editing ·</span><span>Motion graphics ·</span><span>Color and finishing ·</span><span>Sound ·</span><span>Animated captions ·</span><span>Channel management ·</span><span>Long-form editing ·</span><span>Motion graphics ·</span><span>Color and finishing ·</span><span>Sound ·</span><span>Animated captions ·</span><span>Channel management ·</span></div></div><div class="wrap"><div class="split">
+<section class="z z-dark g-top svc pre" id="work" aria-labelledby="svc-h"><span id="services" style="position:absolute;top:0" aria-hidden="true"></span><div class="ticker" aria-hidden="true"><div class="ticker-track"><span>Long-form editing ·</span><span>Motion graphics ·</span><span>Color and finishing ·</span><span>Sound ·</span><span>Animated captions ·</span><span>Channel management ·</span><span>Long-form editing ·</span><span>Motion graphics ·</span><span>Color and finishing ·</span><span>Sound ·</span><span>Animated captions ·</span><span>Channel management ·</span><span>Long-form editing ·</span><span>Motion graphics ·</span><span>Color and finishing ·</span><span>Sound ·</span><span>Animated captions ·</span><span>Channel management ·</span><span>Long-form editing ·</span><span>Motion graphics ·</span><span>Color and finishing ·</span><span>Sound ·</span><span>Animated captions ·</span><span>Channel management ·</span></div></div><div class="wrap"><div class="split">
   <div class="sticky"><p class="kicker">01 · What we make</p><h2 id="svc-h">Your ideas.<br> A sharper cut.</h2><p class="sub">From your first frame to your next upload, the craft stays consistent.</p></div>
   <ol class="svc-list"><li><a href="./services/youtube-video-editing"><span class="n">01</span><h3>Long-Form YouTube Editing</h3><svg class="arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 11.5l7-7M5.5 4.5h6v6"/></svg><p>Story-led cuts. Pacing that earns the next second.</p><span class="tg"><span>Documentary</span><span>Video essays</span><span>Interviews and talking to camera</span><span>Vlogs</span></span></a></li><li><a href="./services/motion-graphics"><span class="n">02</span><h3>Motion Graphics</h3><svg class="arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 11.5l7-7M5.5 4.5h6v6"/></svg><p>Ideas made visible. Movement with a reason.</p><span class="tg"><span>Moving type</span><span>Logo stings</span><span>Explainers</span><span>Visual effects</span></span></a></li><li><a href="./services/short-form-video-editing"><span class="n">03</span><h3>Short-Form Video Editing</h3><svg class="arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 11.5l7-7M5.5 4.5h6v6"/></svg><p>Reels, Shorts and TikTok. A strong hook, a clean finish.</p><span class="tg"><span>Reels</span><span>Shorts</span><span>TikTok</span><span>Repurposing</span></span></a></li><li><a href="./services/youtube-channel-management"><span class="n">04</span><h3>Channel Management</h3><svg class="arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 11.5l7-7M5.5 4.5h6v6"/></svg><p>From the content plan to the publish button.</p><span class="tg"><span>Strategy</span><span>Thumbnails and titles</span><span>Search</span><span>Analytics</span></span></a></li></ol>
 </div></div></section>

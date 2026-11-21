@@ -7,13 +7,20 @@ const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(
 const strip = s => s.replace(/<[^>]+>/g, '');
 const url = s => `${SITE}/services/${s.slug}`;
 const ARROW = '<svg class="arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 11.5l7-7M5.5 4.5h6v6"/></svg>';
-const DESK = prefix => `<figure class="desk-illustration"><picture><source media="(min-width: 768px)" srcset="${prefix}assets/img/dotted-desk-illustration-transparent.png" width="1024" height="572"><img src="${prefix}assets/img/dotted-desk-illustration-mobile.png" width="1080" height="1920" alt="Illustration of a man seated at a desk with a computer monitor and keyboard, drawn in dotted lines." loading="lazy" decoding="async"></picture></figure>`;
+const DESK = '<figure class="desk-illustration"><picture><source media="(min-width: 768px)" srcset="/assets/img/dotted-desk-illustration-transparent.png" width="1024" height="572"><img src="/assets/img/dotted-desk-illustration-mobile.png" width="1080" height="1920" alt="Illustration of a man seated at a desk with a computer monitor and keyboard, drawn in dotted lines." loading="lazy" decoding="async"></picture></figure>';
 const ORG_ID = `${SITE}/#organization`;
 
 const org = {
   '@type': 'Organization', '@id': ORG_ID, name: 'Afteroids Vision', url: `${SITE}/`,
   logo: `${SITE}/logo-navy.png`, email: EMAIL, slogan: 'Creations that impact',
   description: 'A founder-led YouTube video editing and motion graphics studio for creators and brands.',
+};
+
+// Root-absolute paths ("/assets/x", "/#work", "/") are turned into relative ones for the depth of the file being written,
+// so the site works from a domain root, a GitHub Pages project path, or straight from disk. Idempotent.
+const rel = (html, depth) => {
+  const up = depth ? '../'.repeat(depth) : './';
+  return html.replace(/\b(href|src|srcset)="\/(?!\/)([^"]*)"/g, (_, a, p) => `${a}="${up}${p}"`);
 };
 
 const ld = o => `<script type="application/ld+json">${JSON.stringify(o)}</script>`;
@@ -24,11 +31,11 @@ const nav = (cur) => `<header class="nav nav--static" data-state="open">
     <div class="rest">
       <div class="rest-in">
         <ul class="links">
-          <li style="--k:0"><a href="/#work">Work</a></li>
-          <li style="--k:1"><a href="/#services"${cur ? ' aria-current="page"' : ''}>Services</a></li>
-          <li style="--k:2"><a href="/#process">Process</a></li>
-          <li style="--k:3"><a href="/#faq">FAQ</a></li>
-          <li style="--k:4"><a href="/#developer">Developer</a></li>
+          <li style="--k:0"><a href="/#developer">Developer</a></li>
+          <li style="--k:1"><a href="/#work">Work</a></li>
+          <li style="--k:2"><a href="/#services"${cur ? ' aria-current="page"' : ''}>Services</a></li>
+          <li style="--k:3"><a href="/#process">Process</a></li>
+          <li style="--k:4"><a href="/#faq">FAQ</a></li>
         </ul>
         <div class="cell" style="--k:5"><a class="btn btn--sm" href="/#book">Book a call</a></div>
       </div>
@@ -36,7 +43,7 @@ const nav = (cur) => `<header class="nav nav--static" data-state="open">
   </nav>
 </header>`;
 
-const footer = (prefix = './') => `<footer class="foot foot--light"><div class="wm wm--h" aria-hidden="true"><span>AFTEROIDS VISION</span></div>${DESK(prefix)}<div class="wrap">
+const footer = () => `<footer class="foot foot--light"><div class="wm wm--h" aria-hidden="true"><span>AFTEROIDS VISION</span></div>${DESK}<div class="wrap">
   <div class="foot-grid foot-grid--4">
     <div><a class="brand" href="/"><img src="/nav-mark.png" alt="" width="27" height="22"><span translate="no">Afteroids Vision<i>.</i></span></a><p class="tagline">${esc(footerCopy.tagline)}</p><p class="built"><img src="/assets/img/noor-logo.png" alt="" width="40" height="40"><span>Built by <a href="https://noorproductions.in/" target="_blank" rel="noopener" translate="no">NOOR Productions</a></span></p></div>
     <nav aria-label="Site"><h2>Explore</h2><ul><li><a href="/#work">Work</a></li><li><a href="/#services">Services</a></li><li><a href="/#process">Process</a></li><li><a href="/founders/">Founders</a></li><li><a href="/#faq">Questions</a></li></ul></nav>
@@ -82,7 +89,7 @@ function extra(s, cls) {
   return `<section class="${cls}" aria-labelledby="extra-h"><div class="wrap"><div class="split"><div class="sticky"><p class="kicker">Repurposing</p><h2 id="extra-h">${esc(s.extraH)}</h2></div>${rows(s.extra.map((t, i) => [['Review', 'Re-cut', 'Grow'][i] || 'Step', t]))}</div></div></section>`;
 }
 
-const shell = ({ title, desc, u, graph, main, assetPrefix = '../../' }) => `<!doctype html>
+const shell = ({ title, desc, u, graph, main }) => `<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -107,7 +114,7 @@ ${ld(graph)}
 <a class="skip" href="#main">Skip to content</a>
 ${nav(true)}
 ${main}
-${footer(assetPrefix)}
+${footer()}
 <script src="/assets/sections.js" defer></script>
 </body>
 </html>
@@ -185,7 +192,7 @@ function page(s) {
 
 ${darkGroup}
 </main>`;
-  return shell({ title: s.title, desc: s.desc, u, graph, main, assetPrefix: '../../' });
+  return shell({ title: s.title, desc: s.desc, u, graph, main });
 }
 
 // ---------------------------------------------------------------- shared bits for new sections
@@ -258,7 +265,7 @@ const homeBlock = `<!--SERVICES:START-->
   <div class="byus-copy"><p class="kicker">Designed &amp; built by</p><h2 id="by-h" class="shine" translate="no">NOOR Productions</h2><p>A web design studio crafting fast, polished websites, software and web apps for brands that want to stand out. This site was designed and built by us.</p></div>
   <a class="btn btn--ghost" href="https://noorproductions.in/" target="_blank" rel="noopener">Visit NOOR Productions ${ARROW_BTN}</a>
 </div></section>
-<section class="z z-dark g-top svc pre" id="services" aria-labelledby="svc-h"><div class="ticker" aria-hidden="true"><div class="ticker-track">${tickRun.repeat(4)}</div></div><div class="wrap"><div class="split">
+<section class="z z-dark g-top svc pre" id="work" aria-labelledby="svc-h"><span id="services" style="position:absolute;top:0" aria-hidden="true"></span><div class="ticker" aria-hidden="true"><div class="ticker-track">${tickRun.repeat(4)}</div></div><div class="wrap"><div class="split">
   <div class="sticky"><p class="kicker">01 · What we make</p><h2 id="svc-h">Your ideas.<br> A sharper cut.</h2><p class="sub">From your first frame to your next upload, the craft stays consistent.</p></div>
   <ol class="svc-list">${services.map((s, i) => `<li><a href="/services/${s.slug}"><span class="n">${String(i + 1).padStart(2, '0')}</span><h3>${esc(s.name)}</h3>${ARROW}<p>${esc(s.card)}</p><span class="tg">${s.tags.map(t => `<span>${esc(t)}</span>`).join('')}</span></a></li>`).join('')}</ol>
 </div></div></section>
@@ -355,7 +362,7 @@ function planPage(g, pl, idx) {
 
 ${closerHtml('from-ivory', `${talkBtn}<a class="btn btn--sample" href="/#sample-form">Get a free sample edit</a><a class="btn btn--ghost" href="${tabHref}">Back to the plans</a>`)}
 </main>`;
-  return shell({ title, desc, u, graph, main, assetPrefix: '../../' });
+  return shell({ title, desc, u, graph, main });
 }
 
 // ---------------------------------------------------------------- founders page
@@ -396,27 +403,27 @@ function foundersPage() {
 
 ${closerHtml('from-ivory', `<a class="btn" href="/#book">Book a call ${ARROW_BTN}</a><a class="btn btn--sample" href="/#sample-form">Get a free sample edit</a>`, founders.closeH, 'Your next video starts here', founders.closeLine)}
 </main>`;
-  return shell({ title: founders.title + ' | Afteroids Vision', desc: founders.desc, u, graph, main, assetPrefix: '../' });
+  return shell({ title: founders.title + ' | Afteroids Vision', desc: founders.desc, u, graph, main });
 }
 
 // ---------------------------------------------------------------- write
 for (const s of services) {
   mkdirSync(`services/${s.slug}`, { recursive: true });
-  writeFileSync(`services/${s.slug}/index.html`, page(s));
+  writeFileSync(`services/${s.slug}/index.html`, rel(page(s), 2));
 }
 const allPlans = [];
 for (const g of planGroups) g.plans.forEach((pl, i) => {
   mkdirSync(`plans/${pl.slug}`, { recursive: true });
-  writeFileSync(`plans/${pl.slug}/index.html`, planPage(g, pl, i));
+  writeFileSync(`plans/${pl.slug}/index.html`, rel(planPage(g, pl, i), 2));
   allPlans.push([g, pl]);
 });
 mkdirSync('founders', { recursive: true });
-writeFileSync('founders/index.html', foundersPage());
+writeFileSync('founders/index.html', rel(foundersPage(), 1));
 
 let home = readFileSync('index.html', 'utf8');
 home = home.replace(/<!--SERVICES:START-->[\s\S]*<!--SERVICES:END-->/, () => homeBlock);
-home = home.replace(/<!--FOOTER:START-->[\s\S]*<!--FOOTER:END-->/, () => `<!--FOOTER:START-->${footer('./')}<!--FOOTER:END-->`);
-writeFileSync('index.html', home);
+home = home.replace(/<!--FOOTER:START-->[\s\S]*<!--FOOTER:END-->/, () => `<!--FOOTER:START-->${footer()}<!--FOOTER:END-->`);
+writeFileSync('index.html', rel(home, 0));
 
 const today = new Date().toISOString().slice(0, 10);
 const pages = [`${SITE}/`, ...services.map(url), `${SITE}/founders/`, ...allPlans.map(([, pl]) => planUrl(pl))];
